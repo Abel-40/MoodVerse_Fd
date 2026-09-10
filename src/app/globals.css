@@ -1,19 +1,1105 @@
 @import "tailwindcss";
-:root { --navy:#172454; --ink:#25345f; --muted:#7180a8; --blue:#3779ff; --line:#e5ebfa; --paper:#fbfcff; }
-* { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Times New Roman",serif; } button,input,textarea,select { font:inherit; } button { cursor:pointer; }
-.brand-mark { display:inline-flex; align-items:center; gap:9px; color:var(--navy); font-size:20px; letter-spacing:-1px; }.brand-mark svg { width:29px; height:27px; }.brand-light { color:#fff; }
-.button { display:inline-flex; align-items:center; justify-content:center; gap:12px; border:0; border-radius:30px; padding:15px 22px; color:#fff; background:linear-gradient(105deg,#2c80ff,#7454ef); box-shadow:0 11px 25px #5571ee38; font:700 13px Arial,sans-serif; }.button-small { padding:12px 18px; font-size:12px; }
-.public-page { overflow:hidden; background:#fff; }.site-nav { height:76px; display:flex; align-items:center; gap:46px; max-width:1280px; margin:auto; padding:0 48px; background:#fff; }.site-nav a { color:inherit; text-decoration:none; }.nav-links { display:flex; gap:30px; margin-left:22px; color:#6d7b9f; font:500 13px Arial,sans-serif; }.nav-actions { display:flex; align-items:center; gap:22px; margin-left:auto; font:600 13px Arial,sans-serif; }.nav-login { border:0; background:transparent; color:var(--ink); }
-.hero-section { min-height:520px; display:flex; align-items:center; padding:82px max(48px,calc((100vw - 1184px)/2)); background:linear-gradient(90deg,#fff 7%,#ffffffeb 29%,#ffffff15 60%),url('/moutain%20image.png') right center/cover; }.hero-copy { width:51%; max-width:590px; z-index:1; }.eyebrow,.section-kicker { display:inline-flex; align-items:center; gap:7px; color:#5074ca; font:600 12px Arial,sans-serif; }.eyebrow { padding:8px 13px; border-radius:20px; background:#edf3ff; }.hero-copy h1 { margin:23px 0 16px; color:var(--navy); font-size:clamp(49px,6vw,77px); line-height:.99; letter-spacing:-4px; font-weight:500; }.hero-copy h1 em,.story-copy h2 em { color:#387cff; font-style:normal; }.hero-copy p { max-width:405px; color:#7280a5; font:16px/1.7 Arial,sans-serif; }.hero-actions { display:flex; align-items:center; gap:25px; margin-top:28px; }.text-link { display:inline-flex; align-items:center; gap:8px; color:#465d98; font:600 13px Arial,sans-serif; text-decoration:none; }.hero-art { flex:1; min-height:360px; position:relative; }.hero-quote { position:absolute; top:35px; right:3%; color:#fff; font-size:24px; line-height:1.3; font-style:italic; text-shadow:0 2px 8px #223b6b8f; }.hero-quote small { display:block; margin-top:14px; font:12px Arial,sans-serif; }
-.trust-row { display:grid; grid-template-columns:repeat(4,1fr); max-width:1184px; margin:auto; padding:56px 0 72px; text-align:center; }.trust-row>div { padding:0 35px; border-right:1px solid #e5eafb; color:#6173a7; }.trust-row>div:last-child { border:0; }.trust-row h3 { margin:14px 0 7px; color:var(--navy); font:700 14px Arial,sans-serif; }.trust-row p { margin:0; color:#8995b5; font:12px/1.6 Arial,sans-serif; }
-.story-section { display:grid; grid-template-columns:1fr 1fr; max-width:1184px; margin:auto; align-items:center; gap:90px; padding:70px 0 110px; }.story-image { min-height:460px; background:url('/mobile%20wit%20bible%20verse.png') center/cover; box-shadow:16px 22px 50px #7e8fb533; }.story-copy h2 { margin:16px 0; color:var(--navy); font-size:45px; font-weight:500; line-height:1.07; }.story-copy>p { color:#7785a8; font:15px/1.8 Arial,sans-serif; }.steps { display:grid; gap:23px; margin-top:30px; }.steps>div { display:flex; gap:18px; }.steps b { color:#9aabdb; font:700 12px Arial,sans-serif; }.steps strong,.steps small { display:block; }.steps strong { color:var(--navy); font:700 13px Arial,sans-serif; }.steps small { margin-top:4px; color:#8c99b8; font:12px Arial,sans-serif; }.closing-quote { display:grid; place-items:center; min-height:320px; color:#fff; text-align:center; background:linear-gradient(90deg,#111e52aa,#111e5238),url('/moutain%20image.png') center/cover; }.closing-quote p { font-size:39px; }.closing-quote em { color:#dbe7ff; font-style:normal; }.site-footer { display:flex; gap:40px; align-items:center; max-width:1184px; margin:auto; padding:25px 0; color:#99a4c0; font:11px Arial,sans-serif; }
-.auth-page { display:grid; grid-template-columns:46% 54%; min-height:100vh; background:#fff; }.auth-visual { display:flex; align-items:flex-end; position:relative; padding:54px; color:#fff; background:linear-gradient(180deg,#142e6350,#15214ba8),url('/moutain%20image.png') center/cover; }.back-button { position:absolute; top:34px; left:48px; border:0; background:none; color:#fff; font:600 13px Arial,sans-serif; }.auth-visual-copy p { margin:82px 0 12px; font-size:39px; line-height:1.14; font-style:italic; }.auth-panel { display:grid; place-items:center; padding:40px; }.auth-panel-inner { width:min(410px,100%); }.auth-panel h1 { margin:15px 0 8px; color:var(--navy); font-size:44px; font-weight:500; }.auth-intro,.auth-switch { color:#8995b5; font:14px Arial,sans-serif; }.google-button { width:100%; display:flex; justify-content:center; gap:12px; border:1px solid #dce4f5; border-radius:7px; padding:14px; color:#3f5188; background:#fff; font:600 13px Arial,sans-serif; }.divider { display:flex; align-items:center; gap:12px; margin:25px 0; color:#a7b0c6; font:11px Arial,sans-serif; }.divider:before,.divider:after { content:""; height:1px; flex:1; background:#e8edf7; }.auth-form { display:grid; gap:16px; }.auth-form label { display:grid; gap:7px; color:#40517f; font:600 12px Arial,sans-serif; }.auth-form input { border:1px solid #dae2f2; border-radius:6px; padding:13px 14px; color:var(--ink); font:14px Arial,sans-serif; }.auth-submit { width:100%; margin-top:6px; }.auth-switch { margin:24px 0; text-align:center; font-size:12px; }.auth-switch button { border:0; background:none; color:var(--blue); font-weight:700; }.auth-legal { color:#a6afc3; text-align:center; font:10px/1.6 Arial,sans-serif; }.form-error { color:#d15f70; font:12px Arial,sans-serif; }.mobile-auth-logo { display:none; }
-.religion-form .auth-intro { max-width:390px; line-height:1.6; }.religion-options { display:grid; gap:12px; margin:28px 0 18px; }.religion-choice { display:flex; align-items:center; gap:14px; width:100%; border:1px solid #dce4f5; border-radius:10px; padding:17px; color:var(--ink); background:#fff; text-align:left; }.religion-choice:hover,.religion-choice.selected { border-color:#6f91fa; background:#f5f8ff; }.religion-symbol { display:grid; place-items:center; width:38px; height:38px; border-radius:50%; color:#527cf2; background:#e9efff; font-size:22px; }.religion-choice strong,.religion-choice small { display:block; }.religion-choice strong { color:var(--navy); font:700 14px Arial,sans-serif; }.religion-choice small { margin-top:4px; color:#8491b0; font:11px Arial,sans-serif; }.choice-check { margin-left:auto; color:#3779ff; font:700 18px Arial,sans-serif; }
-.dashboard-page { display:flex; min-height:100vh; background:#fbfcff; }.dashboard-sidebar { display:flex; flex:0 0 224px; flex-direction:column; min-height:100vh; padding:30px 20px; background:#fff; border-right:1px solid #edf1fa; }.dashboard-sidebar nav { display:grid; gap:8px; margin-top:42px; }.dashboard-sidebar nav button { display:flex; gap:15px; border:0; border-radius:25px; padding:12px 13px; color:#61709d; background:none; text-align:left; font:600 12px Arial,sans-serif; }.dashboard-sidebar nav button.active { color:var(--blue); background:#edf3ff; }.sidebar-bottom { margin-top:auto; }.sidebar-prompt { padding:20px 16px; color:#596a9f; background:linear-gradient(150deg,#e9edff,#fff2ed); font:12px/1.55 Arial,sans-serif; }.profile-button { display:flex; align-items:center; gap:9px; width:100%; margin-top:24px; border:0; border-top:1px solid #edf1fa; padding-top:20px; background:none; }.avatar { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; color:#fff; background:#4777ff; font:700 13px Arial,sans-serif; }.profile-button strong,.profile-button small { display:block; }.profile-button strong { color:var(--navy); font:700 11px Arial,sans-serif; }.profile-button small { margin-top:4px; color:#9ba6c0; font:10px Arial,sans-serif; }.dashboard-main { flex:1; padding:30px clamp(24px,4vw,62px) 70px; }.dashboard-header { display:flex; justify-content:space-between; }.dashboard-header h1 { margin:7px 0 6px; color:var(--navy); font-size:28px; font-weight:500; }.dashboard-header p { margin:0; color:#8a96b4; font:12px Arial,sans-serif; }.dashboard-grid { display:grid; grid-template-columns:minmax(0,1fr) 250px; gap:22px; margin-top:28px; }.reflection-hero { min-height:300px; border-radius:10px; color:#fff; background:linear-gradient(90deg,#172658c4,#1726581c),url('/moutain%20image.png') center/cover; }.reflection-hero-text { max-width:485px; padding:32px 30px; }.reflection-hero h2 { margin:11px 0 9px; font-size:31px; font-weight:500; }.reflection-hero p { color:#e0e9ff; font:12px/1.55 Arial,sans-serif; }.reflection-hero textarea { width:100%; height:63px; resize:none; border:0; border-radius:12px; padding:13px; font:12px Arial,sans-serif; }.reflection-controls { display:flex; align-items:center; gap:13px; margin-top:10px; }.reflection-controls select { border:0; border-radius:16px; padding:8px 11px; color:#fff; background:#243667; font:11px Arial,sans-serif; }.reflection-controls span { color:#ced9f5; font:10px Arial,sans-serif; }.reflection-controls button { display:grid; place-items:center; width:31px; height:31px; margin-left:auto; border:0; border-radius:50%; color:#fff; background:#4777ff; }.insight-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:21px; }.insight-grid button { display:flex; min-height:135px; flex-direction:column; align-items:flex-start; border:1px solid #e6ebf7; border-radius:9px; padding:14px; color:var(--navy); background:#fff; text-align:left; }.insight-icon { padding:8px; border-radius:50%; }.lilac { color:#7652ec; background:#eee9ff; }.mint { color:#11a990; background:#dff8f1; }.blue { color:#377cff; background:#e3edff; }.insight-grid strong { margin-top:11px; font:700 12px Arial,sans-serif; }.insight-grid small { margin-top:6px; color:#8190b2; font:10px/1.5 Arial,sans-serif; }.featured-scripture { display:grid; grid-template-columns:135px 1fr; gap:21px; margin-top:20px; border:1px solid #e5ebf7; border-radius:9px; padding:14px; background:#fff; }.scripture-art { min-height:155px; background:url('/mobile%20wit%20bible%20verse.png') center/cover; }.featured-scripture blockquote { color:var(--navy); font-size:16px; }.recent-panel { border:1px solid #e1e8f6; border-radius:10px; padding:15px; background:#fff; }.recent-item { display:flex; gap:11px; width:100%; border:0; border-bottom:1px solid #edf1f8; padding:13px 0; background:none; text-align:left; }.recent-item strong,.recent-item small { display:block; }.recent-item strong { color:#4c5e8b; font:600 11px Arial,sans-serif; }.recent-item small { margin-top:4px; color:#9ca8c2; font:9px Arial,sans-serif; }.dashboard-quote { min-height:184px; margin-top:15px; padding:35px 10px; color:#fff; text-align:center; background:linear-gradient(#17255566,#172555aa),url('/moutain%20image.png') center/cover; font-size:15px; font-style:italic; }
+:root {
+  --navy: #172454;
+  --ink: #25345f;
+  --muted: #7180a8;
+  --blue: #3779ff;
+  --line: #e5ebfa;
+  --paper: #fbfcff;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--navy);
+  font-size: 20px;
+  letter-spacing: -1px;
+}
+.brand-mark svg {
+  width: 29px;
+  height: 27px;
+}
+.brand-light {
+  color: #fff;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 30px;
+  padding: 15px 22px;
+  color: #fff;
+  background: linear-gradient(105deg, #2c80ff, #7454ef);
+  box-shadow: 0 11px 25px #5571ee38;
+  font:
+    700 13px Arial,
+    sans-serif;
+}
+.button-small {
+  padding: 12px 18px;
+  font-size: 12px;
+}
+.public-page {
+  overflow: hidden;
+  background: #fff;
+}
+.site-nav {
+  position: sticky;
+  top: 14px;
+  z-index: 20;
+  width: min(1280px, calc(100% - 32px));
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 46px;
+  max-width: 1280px;
+  margin: auto;
+  padding: 0 48px;
+  border: 1px solid #e7edfa;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 34px #526ca414;
+}
+.site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 30px;
+  margin-left: 22px;
+  color: #6d7b9f;
+  font:
+    500 13px Arial,
+    sans-serif;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+  font:
+    600 13px Arial,
+    sans-serif;
+}
+.nav-login {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+}
+.hero-section {
+  min-height: 490px;
+  display: flex;
+  align-items: flex-start;
+  padding: 62px max(48px, calc((100vw - 1184px) / 2)) 70px;
+  background:
+    linear-gradient(90deg, #fff 7%, #ffffffeb 29%, #ffffff15 60%),
+    url("/moutain%20image.png") right center/cover;
+}
+.hero-copy {
+  width: 51%;
+  max-width: 590px;
+  z-index: 1;
+}
+.eyebrow,
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #5074ca;
+  font:
+    600 12px Arial,
+    sans-serif;
+}
+.eyebrow {
+  padding: 8px 13px;
+  border-radius: 20px;
+  background: #edf3ff;
+}
+.hero-copy h1 {
+  margin: 23px 0 16px;
+  color: var(--navy);
+  font-size: clamp(49px, 6vw, 77px);
+  line-height: 0.99;
+  letter-spacing: -4px;
+  font-weight: 500;
+}
+.hero-copy h1 em,
+.story-copy h2 em {
+  color: #387cff;
+  font-style: normal;
+}
+.hero-copy p {
+  max-width: 405px;
+  color: #7280a5;
+  font:
+    16px/1.7 Arial,
+    sans-serif;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 28px;
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #465d98;
+  font:
+    600 13px Arial,
+    sans-serif;
+  text-decoration: none;
+}
+.hero-art {
+  flex: 1;
+  min-height: 360px;
+  position: relative;
+}
+.hero-quote {
+  position: absolute;
+  top: 35px;
+  right: 3%;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.3;
+  font-style: italic;
+  text-shadow: 0 2px 8px #223b6b8f;
+}
+.hero-quote small {
+  display: block;
+  margin-top: 14px;
+  font:
+    12px Arial,
+    sans-serif;
+}
+.trust-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1184px;
+  margin: auto;
+  padding: 56px 0 72px;
+  text-align: center;
+}
+.trust-row > div {
+  padding: 0 35px;
+  border-right: 1px solid #e5eafb;
+  color: #6173a7;
+}
+.trust-row > div:last-child {
+  border: 0;
+}
+.trust-row h3 {
+  margin: 14px 0 7px;
+  color: var(--navy);
+  font:
+    700 14px Arial,
+    sans-serif;
+}
+.trust-row p {
+  margin: 0;
+  color: #8995b5;
+  font:
+    12px/1.6 Arial,
+    sans-serif;
+}
+.story-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1184px;
+  margin: auto;
+  align-items: center;
+  gap: 90px;
+  padding: 70px 0 110px;
+}
+.story-image {
+  min-height: 460px;
+  background: url("/mobile%20wit%20bible%20verse.png") center/cover;
+  box-shadow: 16px 22px 50px #7e8fb533;
+}
+.story-copy h2 {
+  margin: 16px 0;
+  color: var(--navy);
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 1.07;
+}
+.story-copy > p {
+  color: #7785a8;
+  font:
+    15px/1.8 Arial,
+    sans-serif;
+}
+.steps {
+  display: grid;
+  gap: 23px;
+  margin-top: 30px;
+}
+.steps > div {
+  display: flex;
+  gap: 18px;
+}
+.steps b {
+  color: #9aabdb;
+  font:
+    700 12px Arial,
+    sans-serif;
+}
+.steps strong,
+.steps small {
+  display: block;
+}
+.steps strong {
+  color: var(--navy);
+  font:
+    700 13px Arial,
+    sans-serif;
+}
+.steps small {
+  margin-top: 4px;
+  color: #8c99b8;
+  font:
+    12px Arial,
+    sans-serif;
+}
+.closing-quote {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  color: #fff;
+  text-align: center;
+  background:
+    linear-gradient(90deg, #111e52aa, #111e5238),
+    url("/moutain%20image.png") center/cover;
+}
+.closing-quote p {
+  font-size: 39px;
+}
+.closing-quote em {
+  color: #dbe7ff;
+  font-style: normal;
+}
+.site-footer {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  max-width: 1184px;
+  margin: auto;
+  padding: 25px 0;
+  color: #99a4c0;
+  font:
+    11px Arial,
+    sans-serif;
+}
+.auth-page {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  min-height: 100vh;
+  background: #fff;
+}
+.auth-visual {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  padding: 54px;
+  color: #fff;
+  background:
+    linear-gradient(180deg, #142e6350, #15214ba8),
+    url("/moutain%20image.png") center/cover;
+}
+.back-button {
+  position: absolute;
+  top: 34px;
+  left: 48px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font:
+    600 13px Arial,
+    sans-serif;
+}
+.auth-visual-copy p {
+  margin: 82px 0 12px;
+  font-size: 39px;
+  line-height: 1.14;
+  font-style: italic;
+}
+.auth-panel {
+  display: grid;
+  place-items: center;
+  padding: 40px;
+}
+.auth-panel-inner {
+  width: min(410px, 100%);
+}
+.auth-panel h1 {
+  margin: 15px 0 8px;
+  color: var(--navy);
+  font-size: 44px;
+  font-weight: 500;
+}
+.auth-intro,
+.auth-switch {
+  color: #8995b5;
+  font:
+    14px Arial,
+    sans-serif;
+}
+.google-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid #dce4f5;
+  border-radius: 7px;
+  padding: 14px;
+  color: #3f5188;
+  background: #fff;
+  font:
+    600 13px Arial,
+    sans-serif;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 25px 0;
+  color: #a7b0c6;
+  font:
+    11px Arial,
+    sans-serif;
+}
+.divider:before,
+.divider:after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #e8edf7;
+}
+.auth-form {
+  display: grid;
+  gap: 16px;
+}
+.auth-form label {
+  display: grid;
+  gap: 7px;
+  color: #40517f;
+  font:
+    600 12px Arial,
+    sans-serif;
+}
+.auth-form input {
+  border: 1px solid #dae2f2;
+  border-radius: 6px;
+  padding: 13px 14px;
+  color: var(--ink);
+  font:
+    14px Arial,
+    sans-serif;
+}
+.auth-submit {
+  width: 100%;
+  margin-top: 6px;
+}
+.auth-switch {
+  margin: 24px 0;
+  text-align: center;
+  font-size: 12px;
+}
+.auth-switch button {
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font-weight: 700;
+}
+.auth-legal {
+  color: #a6afc3;
+  text-align: center;
+  font:
+    10px/1.6 Arial,
+    sans-serif;
+}
+.form-error {
+  color: #d15f70;
+  font:
+    12px Arial,
+    sans-serif;
+}
+.mobile-auth-logo {
+  display: none;
+}
+.religion-form .auth-intro {
+  max-width: 390px;
+  line-height: 1.6;
+}
+.religion-options {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0 18px;
+}
+.religion-choice {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  border: 1px solid #dce4f5;
+  border-radius: 10px;
+  padding: 17px;
+  color: var(--ink);
+  background: #fff;
+  text-align: left;
+}
+.religion-choice:hover,
+.religion-choice.selected {
+  border-color: #6f91fa;
+  background: #f5f8ff;
+}
+.religion-symbol {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #527cf2;
+  background: #e9efff;
+  font-size: 22px;
+}
+.religion-choice strong,
+.religion-choice small {
+  display: block;
+}
+.religion-choice strong {
+  color: var(--navy);
+  font:
+    700 14px Arial,
+    sans-serif;
+}
+.religion-choice small {
+  margin-top: 4px;
+  color: #8491b0;
+  font:
+    11px Arial,
+    sans-serif;
+}
+.choice-check {
+  margin-left: auto;
+  color: #3779ff;
+  font:
+    700 18px Arial,
+    sans-serif;
+}
+.dashboard-page {
+  display: flex;
+  min-height: 100vh;
+  background: #fbfcff;
+}
+.dashboard-sidebar {
+  display: flex;
+  flex: 0 0 224px;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 30px 20px;
+  background: #fff;
+  border-right: 1px solid #edf1fa;
+}
+.dashboard-sidebar nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 42px;
+}
+.dashboard-sidebar nav button {
+  display: flex;
+  gap: 15px;
+  border: 0;
+  border-radius: 25px;
+  padding: 12px 13px;
+  color: #61709d;
+  background: none;
+  text-align: left;
+  font:
+    600 12px Arial,
+    sans-serif;
+}
+.dashboard-sidebar nav button.active {
+  color: var(--blue);
+  background: #edf3ff;
+}
+.sidebar-bottom {
+  margin-top: auto;
+}
+.sidebar-prompt {
+  padding: 20px 16px;
+  color: #596a9f;
+  background: linear-gradient(150deg, #e9edff, #fff2ed);
+  font:
+    12px/1.55 Arial,
+    sans-serif;
+}
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 24px;
+  border: 0;
+  border-top: 1px solid #edf1fa;
+  padding-top: 20px;
+  background: none;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #fff;
+  background: #4777ff;
+  font:
+    700 13px Arial,
+    sans-serif;
+}
+.profile-button strong,
+.profile-button small {
+  display: block;
+}
+.profile-button strong {
+  color: var(--navy);
+  font:
+    700 11px Arial,
+    sans-serif;
+}
+.profile-button small {
+  margin-top: 4px;
+  color: #9ba6c0;
+  font:
+    10px Arial,
+    sans-serif;
+}
+.dashboard-main {
+  flex: 1;
+  padding: 30px clamp(24px, 4vw, 62px) 70px;
+}
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-header h1 {
+  margin: 7px 0 6px;
+  color: var(--navy);
+  font-size: 28px;
+  font-weight: 500;
+}
+.dashboard-header p {
+  margin: 0;
+  color: #8a96b4;
+  font:
+    12px Arial,
+    sans-serif;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 22px;
+  margin-top: 28px;
+}
+.reflection-hero {
+  min-height: 300px;
+  border-radius: 10px;
+  color: #fff;
+  background:
+    linear-gradient(90deg, #172658c4, #1726581c),
+    url("/moutain%20image.png") center/cover;
+}
+.reflection-hero-text {
+  max-width: 485px;
+  padding: 32px 30px;
+}
+.reflection-hero h2 {
+  margin: 11px 0 9px;
+  font-size: 31px;
+  font-weight: 500;
+}
+.reflection-hero p {
+  color: #e0e9ff;
+  font:
+    12px/1.55 Arial,
+    sans-serif;
+}
+.reflection-hero textarea {
+  width: 100%;
+  height: 63px;
+  resize: none;
+  border: 0;
+  border-radius: 12px;
+  padding: 13px;
+  font:
+    12px Arial,
+    sans-serif;
+}
+.reflection-controls {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 10px;
+}
+.reflection-controls select {
+  border: 0;
+  border-radius: 16px;
+  padding: 8px 11px;
+  color: #fff;
+  background: #243667;
+  font:
+    11px Arial,
+    sans-serif;
+}
+.reflection-controls span {
+  color: #ced9f5;
+  font:
+    10px Arial,
+    sans-serif;
+}
+.reflection-controls > .rounded-md {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.reflection-controls > .rounded-md > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.reflection-controls > .rounded-md button {
+  width: auto;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: #d7e2ff;
+  background: transparent;
+  font:
+    10px Arial,
+    sans-serif;
+}
+.reflection-controls > .rounded-md button:hover {
+  color: #fff;
+}
+.reflection-controls > .rounded-md audio {
+  display: none;
+}
+.reflection-controls > .rounded-md > div > span {
+  color: #ced9f5;
+  font:
+    10px Arial,
+    sans-serif;
+}
+.voice-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  border: 1px solid #a8c3ff;
+  border-radius: 18px;
+  padding: 8px 13px;
+  color: #e6eeff;
+  background: #2a4380;
+  font:
+    600 10px Arial,
+    sans-serif;
+}
+.voice-submit:disabled {
+  opacity: 0.55;
+}
+.dashboard-error {
+  margin-top: 12px;
+}
+.reflection-controls button {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #4777ff;
+}
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 21px;
+}
+.insight-grid button {
+  display: flex;
+  min-height: 135px;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #e6ebf7;
+  border-radius: 9px;
+  padding: 14px;
+  color: var(--navy);
+  background: #fff;
+  text-align: left;
+}
+.insight-icon {
+  padding: 8px;
+  border-radius: 50%;
+}
+.lilac {
+  color: #7652ec;
+  background: #eee9ff;
+}
+.mint {
+  color: #11a990;
+  background: #dff8f1;
+}
+.blue {
+  color: #377cff;
+  background: #e3edff;
+}
+.insight-grid strong {
+  margin-top: 11px;
+  font:
+    700 12px Arial,
+    sans-serif;
+}
+.insight-grid small {
+  margin-top: 6px;
+  color: #8190b2;
+  font:
+    10px/1.5 Arial,
+    sans-serif;
+}
+.featured-scripture {
+  display: grid;
+  grid-template-columns: 135px 1fr;
+  gap: 21px;
+  margin-top: 20px;
+  border: 1px solid #e5ebf7;
+  border-radius: 9px;
+  padding: 14px;
+  background: #fff;
+}
+.scripture-art {
+  min-height: 155px;
+  background: url("/mobile%20wit%20bible%20verse.png") center/cover;
+}
+.featured-scripture blockquote {
+  color: var(--navy);
+  font-size: 16px;
+}
+.recent-panel {
+  border: 1px solid #e1e8f6;
+  border-radius: 10px;
+  padding: 15px;
+  background: #fff;
+}
+.recent-item {
+  display: flex;
+  gap: 11px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #edf1f8;
+  padding: 13px 0;
+  background: none;
+  text-align: left;
+}
+.recent-item strong,
+.recent-item small {
+  display: block;
+}
+.recent-item strong {
+  color: #4c5e8b;
+  font:
+    600 11px Arial,
+    sans-serif;
+}
+.recent-item small {
+  margin-top: 4px;
+  color: #9ca8c2;
+  font:
+    9px Arial,
+    sans-serif;
+}
+.dashboard-quote {
+  min-height: 184px;
+  margin-top: 15px;
+  padding: 35px 10px;
+  color: #fff;
+  text-align: center;
+  background:
+    linear-gradient(#17255566, #172555aa),
+    url("/moutain%20image.png") center/cover;
+  font-size: 15px;
+  font-style: italic;
+}
+.mood-pulse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 20px;
+  border: 1px solid #e4eafa;
+  border-radius: 10px;
+  padding: 20px 22px;
+  background: linear-gradient(115deg, #f4f7ff, #fff);
+}
+.mood-pulse h2,
+.practice-card h2 {
+  margin: 9px 0 6px;
+  color: var(--navy);
+  font-size: 21px;
+  font-weight: 500;
+}
+.mood-pulse p,
+.practice-card p {
+  max-width: 390px;
+  margin: 0;
+  color: #8190b2;
+  font:
+    11px/1.6 Arial,
+    sans-serif;
+}
+.pulse-bars {
+  display: flex;
+  align-items: end;
+  gap: 11px;
+  height: 94px;
+  padding-top: 10px;
+}
+.pulse-bars span {
+  position: relative;
+  display: block;
+  width: 17px;
+  min-height: 23px;
+  border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(#78a8ff, #6c58ed);
+}
+.pulse-bars span:nth-child(2n) {
+  background: linear-gradient(#65d6c0, #3b9fce);
+}
+.pulse-bars small {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: #9aa7c1;
+  font:
+    9px Arial,
+    sans-serif;
+}
+.practice-card {
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  gap: 22px;
+  align-items: center;
+  margin-top: 20px;
+  border: 1px solid #e4eafa;
+  border-radius: 10px;
+  padding: 14px;
+  background: #fff;
+}
+.practice-art {
+  min-height: 154px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, #17285d33, #17285d99),
+    url("/moutain%20image.png") center/cover;
+}
 
 @media (max-width: 900px) {
-  .site-nav { padding:0 22px; }.nav-links { display:none; }.hero-section { padding:60px 24px 75px; }.hero-copy { width:75%; }.hero-copy h1 { font-size:53px; }.trust-row,.story-section { padding-left:24px; padding-right:24px; }.story-section { gap:40px; }.dashboard-sidebar { flex-basis:76px; padding:30px 12px; }.dashboard-sidebar .brand-mark strong,.dashboard-sidebar nav button { font-size:0; justify-content:center; }.dashboard-sidebar .sidebar-prompt,.profile-button strong,.profile-button small { display:none; }.dashboard-grid { grid-template-columns:1fr; }.recent-panel { display:none; }
+  .site-nav {
+    padding: 0 22px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .hero-section {
+    padding: 60px 24px 75px;
+  }
+  .hero-copy {
+    width: 75%;
+  }
+  .hero-copy h1 {
+    font-size: 53px;
+  }
+  .trust-row,
+  .story-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .story-section {
+    gap: 40px;
+  }
+  .dashboard-sidebar {
+    flex-basis: 76px;
+    padding: 30px 12px;
+  }
+  .dashboard-sidebar .brand-mark strong,
+  .dashboard-sidebar nav button {
+    font-size: 0;
+    justify-content: center;
+  }
+  .dashboard-sidebar .sidebar-prompt,
+  .profile-button strong,
+  .profile-button small {
+    display: none;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .recent-panel {
+    display: none;
+  }
 }
 @media (max-width: 640px) {
-  .site-nav { height:64px; }.nav-actions { gap:8px; }.nav-login { font-size:11px; }.button-small { padding:10px 12px; font-size:10px; }.hero-section { min-height:620px; align-items:flex-start; }.hero-copy { width:100%; }.hero-copy h1 { font-size:50px; }.hero-art { position:absolute; inset:250px -120px 0 0; opacity:.62; }.hero-quote { display:none; }.hero-actions { flex-wrap:wrap; }.trust-row { grid-template-columns:1fr 1fr; gap:30px 0; padding:45px 12px; }.trust-row>div { padding:0 13px; border:0; }.story-section { grid-template-columns:1fr; gap:35px; padding-top:60px; }.story-image { min-height:350px; }.story-copy h2 { font-size:37px; }.closing-quote p { font-size:29px; }.site-footer { flex-wrap:wrap; padding:25px 20px; gap:12px 25px; }.auth-page { grid-template-columns:1fr; }.auth-visual { display:none; }.auth-panel { padding:35px 22px; align-items:start; }.mobile-auth-logo { display:block; margin-bottom:48px; }.auth-panel h1 { font-size:39px; }.dashboard-sidebar { display:none; }.dashboard-main { padding:25px 17px 50px; }.dashboard-header h1 { font-size:25px; }.reflection-hero-text { padding:27px 20px; }.reflection-hero h2 { font-size:28px; }.insight-grid { grid-template-columns:1fr; }.featured-scripture { grid-template-columns:1fr; }.scripture-art { min-height:190px; }
+  .site-nav {
+    top: 8px;
+    height: 60px;
+    padding: 0 14px;
+  }
+  .nav-actions {
+    gap: 8px;
+  }
+  .nav-login {
+    font-size: 11px;
+  }
+  .button-small {
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+  .hero-section {
+    min-height: 620px;
+    padding-top: 48px;
+    align-items: flex-start;
+  }
+  .hero-copy {
+    width: 100%;
+  }
+  .hero-copy h1 {
+    font-size: 50px;
+  }
+  .hero-art {
+    position: absolute;
+    inset: 250px -120px 0 0;
+    opacity: 0.62;
+  }
+  .hero-quote {
+    display: none;
+  }
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  .trust-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 0;
+    padding: 45px 12px;
+  }
+  .trust-row > div {
+    padding: 0 13px;
+    border: 0;
+  }
+  .story-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-top: 60px;
+  }
+  .story-image {
+    min-height: 350px;
+  }
+  .story-copy h2 {
+    font-size: 37px;
+  }
+  .closing-quote p {
+    font-size: 29px;
+  }
+  .site-footer {
+    flex-wrap: wrap;
+    padding: 25px 20px;
+    gap: 12px 25px;
+  }
+  .auth-page {
+    grid-template-columns: 1fr;
+  }
+  .auth-visual {
+    display: none;
+  }
+  .auth-panel {
+    padding: 35px 22px;
+    align-items: start;
+  }
+  .mobile-auth-logo {
+    display: block;
+    margin-bottom: 48px;
+  }
+  .auth-panel h1 {
+    font-size: 39px;
+  }
+  .dashboard-sidebar {
+    display: none;
+  }
+  .dashboard-main {
+    padding: 25px 17px 50px;
+  }
+  .dashboard-header h1 {
+    font-size: 25px;
+  }
+  .reflection-hero-text {
+    padding: 27px 20px;
+  }
+  .reflection-hero h2 {
+    font-size: 28px;
+  }
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-scripture {
+    grid-template-columns: 1fr;
+  }
+  .scripture-art {
+    min-height: 190px;
+  }
+  .mood-pulse {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .pulse-bars {
+    align-self: center;
+  }
+  .practice-card {
+    grid-template-columns: 1fr;
+  }
+  .practice-art {
+    min-height: 180px;
+  }
 }
