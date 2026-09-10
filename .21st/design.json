@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "project": {
+    "name": "moodverse-fd",
+    "productType": null,
+    "stack": [
+      "nextjs",
+      "react",
+      "tailwind-v4"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "src/app/globals.css"
+    ],
+    "components": [],
+    "assets": [],
+    "instructions": [
+      "AGENTS.md",
+      "CLAUDE.md"
+    ]
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "--color-ink-950": {
+        "value": "#08090c",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-900": {
+        "value": "#0d0f14",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-850": {
+        "value": "#12151c",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-800": {
+        "value": "#171b24",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-700": {
+        "value": "#222734",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-600": {
+        "value": "#313849",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-500": {
+        "value": "#4a5265",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-400": {
+        "value": "#6b7488",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-300": {
+        "value": "#98a1b5",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-200": {
+        "value": "#c4cad8",
+        "source": "src/app/globals.css"
+      },
+      "--color-ink-100": {
+        "value": "#e7eaf1",
+        "source": "src/app/globals.css"
+      },
+      "--color-accent": {
+        "value": "#7c9cff",
+        "source": "src/app/globals.css"
+      },
+      "--color-accent-dim": {
+        "value": "#3d4f8a",
+        "source": "src/app/globals.css"
+      },
+      "--color-ok": {
+        "value": "#4ade80",
+        "source": "src/app/globals.css"
+      },
+      "--color-warn": {
+        "value": "#fbbf24",
+        "source": "src/app/globals.css"
+      },
+      "--color-bad": {
+        "value": "#fb7185",
+        "source": "src/app/globals.css"
+      },
+      "--color-info": {
+        "value": "#67e8f9",
+        "source": "src/app/globals.css"
+      }
+    },
+    "typography": {
+      "--font-sans": {
+        "value": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto,\n    \"Helvetica Neue\", Arial, sans-serif",
+        "source": "src/app/globals.css"
+      },
+      "--font-mono": {
+        "value": "ui-monospace, \"Cascadia Code\", \"Source Code Pro\", Menlo,\n    Consolas, \"DejaVu Sans Mono\", monospace",
+        "source": "src/app/globals.css"
+      }
+    },
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [],
+    "avoid": []
+  },
+  "decisions": [],
+  "evidence": [
+    {
+      "fact": "design.colorMode:light",
+      "source": "src/app/globals.css"
+    },
+    {
+      "fact": "design.tokens",
+      "source": "src/app/globals.css"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "AGENTS.md"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "CLAUDE.md"
+    },
+    {
+      "fact": "project.stack:nextjs",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:tailwind-v4",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-09-10T18:43:31.621Z"
+}
