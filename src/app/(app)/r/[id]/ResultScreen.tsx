@@ -53,7 +53,10 @@ export function ResultScreen({ id, guest }: { id: number; guest: boolean }) {
     );
   }
 
-  if (!reflection || reflection.status === "pending" || reflection.status === "processing") {
+  // Still loading: we don't know yet whether it is ready, so no "finding" copy.
+  if (!reflection) return <ResultSkeleton />;
+
+  if (reflection.status === "pending" || reflection.status === "processing") {
     return (
       <div
         aria-busy="true"
@@ -197,6 +200,43 @@ export function ResultScreen({ id, guest }: { id: number; guest: boolean }) {
           </details>
         )}
       </section>
+    </div>
+  );
+}
+
+/** The result layout in outline while the reflection loads. */
+function ResultSkeleton() {
+  const t = useTranslations("result");
+
+  return (
+    <div aria-busy="true" className="mv-split h-full max-[1180px]:h-auto">
+      <div className="mv-sky-wash min-h-[640px] max-[1180px]:min-h-[70vh]" />
+      <div role="status" className="flex flex-col gap-6 bg-bg px-8 py-9 max-[600px]:px-5">
+        <span className="sr-only">{t("loading")}</span>
+        <div aria-hidden="true" className="mv-card flex flex-col gap-3.5 p-6">
+          <span className="mv-skeleton h-3 w-32" />
+          <span className="mv-skeleton h-4 w-full" />
+          <span className="mv-skeleton h-4 w-4/5" />
+          <span className="mt-1 flex gap-2">
+            <span className="mv-skeleton h-8 w-20 rounded-full" />
+            <span className="mv-skeleton h-8 w-24 rounded-full" />
+          </span>
+        </div>
+        <div aria-hidden="true" className="mv-card flex flex-col gap-3.5 p-6">
+          <span className="mv-skeleton h-3.5 w-44" />
+          <span className="grid grid-cols-2 gap-2.5">
+            <span className="mv-skeleton h-11 rounded-full" />
+            <span className="mv-skeleton h-11 rounded-full" />
+          </span>
+        </div>
+        <div aria-hidden="true" className="flex flex-col gap-2.5">
+          <span className="mv-skeleton h-[52px] rounded-full" />
+          <span className="grid grid-cols-2 gap-2.5">
+            <span className="mv-skeleton h-11 rounded-full" />
+            <span className="mv-skeleton h-11 rounded-full" />
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

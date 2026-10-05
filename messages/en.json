@@ -105,6 +105,7 @@
     "listeningTime": "· {time}"
   },
   "result": {
+    "loading": "Loading this passage…",
     "why": "Why this passage",
     "noticed": "What we noticed",
     "actions": {
@@ -183,6 +184,7 @@
     "noMatch": "No reflections match these filters.",
     "clear": "Clear filters",
     "loading": "Loading more reflections…",
+    "loadingList": "Loading your reflections…",
     "today": "Today, {time}",
     "yesterday": "Yesterday, {time}",
     "empty": {
@@ -549,6 +551,11 @@
       "signIn": "Sign in",
       "back": "Back to my reflection"
     }
+  },
+  "offline": {
+    "title": "You’re offline",
+    "body": "You can keep reading what’s here. Changes will wait until you’re back online.",
+    "retry": "Try again"
   },
   "busy": {
     "title": "Let’s pause for a moment",

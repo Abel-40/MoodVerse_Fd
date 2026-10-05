@@ -194,7 +194,21 @@ export function HistoryScreen({ selectedId, guest }: { selectedId: number | null
           ))}
         </div>
 
-        {shown.length === 0 && !loading ? (
+        {loading ? (
+          <div role="status" className="mt-1 flex flex-col gap-2.5">
+            <span className="sr-only">{t("history.loadingList")}</span>
+            {[0, 1, 2, 3].map((key) => (
+              <div key={key} aria-hidden="true" className="flex gap-3.5 rounded-[22px] bg-surface py-3 ps-3 pe-[52px] shadow-card">
+                <span className="mv-skeleton h-[76px] w-14 shrink-0 rounded-[14px]" />
+                <span className="flex grow flex-col justify-center gap-2.5">
+                  <span className="mv-skeleton h-2.5 w-28" />
+                  <span className="mv-skeleton h-3 w-full" />
+                  <span className="mv-skeleton h-3.5 w-36" />
+                </span>
+              </div>
+            ))}
+          </div>
+        ) : shown.length === 0 ? (
           <p className="mt-6 text-center text-[15px] text-ink-2">
             {t("history.noMatch")}{" "}
             <button type="button" onClick={clearFilters} className="font-bold text-primary underline-offset-2 hover:underline">

@@ -421,6 +421,14 @@
   .mv-float {
     animation: mv-float 8s ease-in-out infinite;
   }
+  /* Loading placeholders: calm sky-tinted blocks with a slow pulse, no
+     shimmer. Reduced motion stops the pulse with every other animation. */
+  .mv-skeleton {
+    display: block;
+    border-radius: 10px;
+    background: var(--mv-surface-2);
+    animation: mv-pulse 2.4s ease-in-out infinite;
+  }
 
   /* voice: the blinking caret after the live transcript, and the level meter */
   .mv-caret {
@@ -614,6 +622,16 @@
     .mv-pane {
       height: auto;
     }
+  }
+}
+
+@keyframes mv-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
   }
 }
 
