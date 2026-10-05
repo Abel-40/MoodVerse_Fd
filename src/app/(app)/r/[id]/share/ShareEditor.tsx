@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore, type DragEvent, type KeyboardEvent, type PointerEvent } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, Copy, Download, ImagePlus, Lock, Share } from "lucide-react";
+import { Check, ChevronLeft, Copy, Download, ImagePlus, Lock, Share } from "lucide-react";
 
 import { Button, ButtonLink } from "@/components/mv/Button";
 import { Segmented } from "@/components/mv/Segmented";
@@ -303,6 +303,15 @@ export function ShareEditor({ id, passageId }: { id: number; passageId: string |
                               {t("share.photoTile")}
                             </span>
                           )
+                        )}
+                        {/* The ring alone would say "selected" by colour only. */}
+                        {checked && (
+                          <span
+                            aria-hidden="true"
+                            className="absolute end-1.5 top-1.5 flex size-[22px] items-center justify-center rounded-full bg-surface text-primary shadow-card"
+                          >
+                            <Check size={14} strokeWidth={3} />
+                          </span>
                         )}
                       </button>
                     );
