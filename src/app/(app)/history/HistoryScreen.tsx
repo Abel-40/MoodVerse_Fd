@@ -136,7 +136,7 @@ export function HistoryScreen({ selectedId, guest }: { selectedId: number | null
       <section
         aria-labelledby={ids.title}
         className={cx(
-          "mv-sky-wash flex flex-col gap-4 overflow-y-auto px-[26px] pt-9 pb-10 shadow-[1px_0_0_var(--mv-line)] min-[901px]:h-full",
+          "mv-sky-wash flex flex-col gap-4 overflow-y-auto px-[26px] pt-9 pb-10 border-e border-line min-[901px]:h-full",
           selectedId !== null && "max-[1180px]:hidden",
         )}
       >
@@ -151,14 +151,14 @@ export function HistoryScreen({ selectedId, guest }: { selectedId: number | null
           <label htmlFor={ids.search} className="sr-only">
             {t("history.searchLabel")}
           </label>
-          <Search size={20} aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-ink-3" />
+          <Search size={20} aria-hidden="true" className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-ink-3" />
           <input
             id={ids.search}
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t("history.search")}
-            className="h-12 w-full rounded-full bg-surface pr-4 pl-12 text-[15px] shadow-card"
+            className="h-12 w-full rounded-full bg-surface ps-12 pe-4 text-[15px] shadow-card"
           />
         </div>
 
@@ -213,7 +213,7 @@ export function HistoryScreen({ selectedId, guest }: { selectedId: number | null
                     onPointerEnter={() => prefetch(reflection.id)}
                     onFocus={() => prefetch(reflection.id)}
                     className={cx(
-                      "flex gap-3.5 rounded-[22px] bg-surface py-3 pr-[52px] pl-3 text-left",
+                      "flex gap-3.5 rounded-[22px] bg-surface py-3 ps-3 pe-[52px] text-start",
                       current
                         ? "shadow-[inset_0_0_0_2px_var(--mv-primary),0_16px_36px_-16px_rgba(47,91,234,.45)]"
                         : "shadow-card",
@@ -240,7 +240,7 @@ export function HistoryScreen({ selectedId, guest }: { selectedId: number | null
                           })}
                         </span>
                       </span>
-                      <span className="line-clamp-2 text-sm leading-5 text-ink-2">{reflection.text}</span>
+                      <span dir="auto" className="line-clamp-2 text-sm leading-5 text-ink-2">{reflection.text}</span>
                       <span className="font-serif text-[17px] font-semibold">{passage.reference}</span>
                     </span>
                   </Link>
@@ -248,7 +248,7 @@ export function HistoryScreen({ selectedId, guest }: { selectedId: number | null
                     type="button"
                     aria-label={t("history.deleteRow")}
                     onClick={() => setPendingDelete(reflection.id)}
-                    className="absolute top-2 right-2 flex size-11 items-center justify-center rounded-[14px] bg-[rgba(180,35,42,.08)] text-danger opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100 focus-visible:opacity-100 rtl:right-auto rtl:left-2"
+                    className="absolute end-2 top-2 flex size-11 items-center justify-center rounded-[14px] bg-[rgba(180,35,42,.08)] text-danger opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100 focus-visible:opacity-100"
                   >
                     <Trash2 size={18} />
                   </button>
@@ -273,7 +273,7 @@ export function HistoryScreen({ selectedId, guest }: { selectedId: number | null
         )}
       >
         {selectedId !== null && (
-          <ButtonLink href="/history" variant="ghost" className="-ml-2 self-start pl-1 text-ink min-[1181px]:hidden">
+          <ButtonLink href="/history" variant="ghost" className="-ms-2 self-start ps-1 text-ink min-[1181px]:hidden">
             <ChevronLeft size={20} className="rtl:-scale-x-100" />
             {t("history.back")}
           </ButtonLink>
@@ -318,7 +318,7 @@ function Detail({ reflection, onDelete }: { reflection: Reflection; onDelete: ()
         <div className="flex flex-col gap-2.5">
           <span className="mv-overline text-ink-3">{longDateTime(reflection.createdAt, locale)}</span>
           {reflection.text && (
-            <p className="font-serif text-[calc(24px*var(--mv-text-scale,1))] leading-[1.4] text-ink italic">“{reflection.text}”</p>
+            <p dir="auto" className="font-serif text-[calc(24px*var(--mv-text-scale,1))] leading-[1.4] text-ink italic">“{reflection.text}”</p>
           )}
           <span className="flex items-center gap-1.5 text-[13px] font-semibold text-ink-3">
             <Lock size={16} />
@@ -348,11 +348,13 @@ function Detail({ reflection, onDelete }: { reflection: Reflection; onDelete: ()
         </span>
         <div className="relative flex flex-col gap-3 [text-shadow:0_1px_16px_rgba(8,10,30,.35)]">
           {quran && passage.arabic && (
-            <p lang="ar" dir="rtl" className="text-right font-arabic text-[calc(30px*var(--mv-text-scale,1))] leading-[1.9] font-medium">
+            <p lang="ar" dir="rtl" className="text-start font-arabic text-[calc(30px*var(--mv-text-scale,1))] leading-[1.9] font-medium">
               {passage.arabic}
             </p>
           )}
           <blockquote
+            lang="en"
+            dir="ltr"
             className={cx(
               "font-serif font-medium",
               quran ? "text-[calc(24px*var(--mv-text-scale,1))] leading-[1.38] italic" : "text-[calc(32px*var(--mv-text-scale,1))] leading-[1.3]",

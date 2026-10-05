@@ -26,7 +26,7 @@ export function Field({ label, footer, compact, focused, fieldClassName, id, ...
         {label}
       </label>
       <textarea id={textareaId} {...props} />
-      {footer && <div className="flex items-center justify-between pt-2 pr-3 pb-3 pl-3.5">{footer}</div>}
+      {footer && <div className="flex items-center justify-between pt-2 pe-3 pb-3 ps-3.5">{footer}</div>}
     </div>
   );
 }

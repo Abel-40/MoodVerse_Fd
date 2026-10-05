@@ -20,7 +20,7 @@ export function LandingNav() {
     <header className="pointer-events-none fixed inset-x-0 top-0 z-30 px-[clamp(16px,4vw,64px)] pt-5">
       <nav
         aria-label={t("label")}
-        className="mv-glass pointer-events-auto mx-auto flex min-h-[72px] max-w-[1312px] items-center justify-between gap-5 rounded-[26px] pr-3 pl-6"
+        className="mv-glass pointer-events-auto mx-auto flex min-h-[72px] max-w-[1312px] items-center justify-between gap-5 rounded-[26px] pe-3 ps-6"
       >
         <Link href="/" className="flex min-h-11 items-center">
           <Wordmark size={30} labelClassName="text-[25px]! tracking-[-0.01em]" />
@@ -75,7 +75,7 @@ function PhoneMockup() {
                 className="mv-drift object-cover object-[center_45%]"
               />
               <div className="mv-scrim absolute inset-0" />
-              <p className="relative font-serif text-[29px] leading-[1.3] font-medium tracking-[-0.01em] [text-shadow:0_1px_16px_rgba(8,10,30,.35)]">
+              <p lang="en" dir="ltr" className="relative font-serif text-[29px] leading-[1.3] font-medium tracking-[-0.01em] [text-shadow:0_1px_16px_rgba(8,10,30,.35)]">
                 {passage.text}
               </p>
               <p className="relative mt-4 flex flex-wrap items-center gap-2.5">
@@ -98,7 +98,7 @@ function PhoneMockup() {
                   <NeedChip as="li">{t("needs.comfort")}</NeedChip>
                 </ul>
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5 rounded-3xl bg-sky py-2.5 pr-2.5 pl-4">
+              <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5 rounded-3xl bg-sky py-2.5 pe-2.5 ps-4">
                 <span className="text-sm font-semibold text-ink-2">{t("landing.hero.mockupFeedback")}</span>
                 <span className="flex gap-1.5">
                   <span className="mv-chip-filter h-11! px-3.5!">{t("landing.hero.mockupHelped")}</span>

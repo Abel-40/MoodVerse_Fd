@@ -228,7 +228,7 @@ export function ShareEditor({ id, passageId }: { id: number; passageId: string |
     <div className="mv-sky-wash min-h-full" onDragOver={(event) => event.preventDefault()} onDrop={onDrop}>
       <div className="flex flex-col gap-[22px] px-[clamp(24px,4vw,56px)] pt-7 pb-10">
         <div className="flex items-center justify-between gap-4">
-          <ButtonLink href={`/r/${id}`} variant="ghost" className="pr-2.5 pl-1 text-ink">
+          <ButtonLink href={`/r/${id}`} variant="ghost" className="pe-2.5 ps-1 text-ink">
             <ChevronLeft size={20} strokeWidth={1.8} className="rtl:-scale-x-100" />
             {t("share.back")}
           </ButtonLink>

@@ -25,7 +25,7 @@ export function AuthBackdrop({ children }: { children: ReactNode }) {
       <Link
         href="/"
         aria-label={t("home")}
-        className="absolute top-7 left-[clamp(20px,4vw,48px)] flex min-h-11 items-center text-white max-[600px]:relative max-[600px]:top-0 max-[600px]:left-0 max-[600px]:mb-6 max-[600px]:self-start"
+        className="absolute top-7 start-[clamp(20px,4vw,48px)] flex min-h-11 items-center text-white max-[600px]:relative max-[600px]:top-0 max-[600px]:start-0 max-[600px]:mb-6 max-[600px]:self-start"
       >
         <Wordmark tone="white" labelClassName="text-[26px]!" />
       </Link>

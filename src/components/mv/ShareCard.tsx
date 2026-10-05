@@ -244,6 +244,8 @@ export function ShareCard({
               </p>
               <span aria-hidden="true" className="h-0.5 w-7 rounded-sm" style={{ background: textTone === "light" ? "rgba(255,255,255,.8)" : "rgba(19,26,51,.5)" }} />
               <p
+                lang="en"
+                dir="ltr"
                 className="text-center font-serif font-medium italic text-balance"
                 style={{ fontSize: 20 * textScale, lineHeight: 1.38 }}
               >
@@ -252,6 +254,8 @@ export function ShareCard({
             </div>
           ) : (
             <p
+              lang="en"
+              dir="ltr"
               className="text-center font-serif font-medium tracking-[-0.005em] text-balance"
               style={{ fontSize: 29 * textScale, lineHeight: 1.32 }}
             >

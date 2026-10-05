@@ -223,7 +223,7 @@ export function WelcomeFlow() {
                         onClick={() => setTradition(value)}
                         onKeyDown={(event) => onCardKey(event, index)}
                         className={cx(
-                          "relative flex min-h-[230px] flex-col justify-end overflow-hidden rounded-card text-left text-white transition-shadow duration-[400ms]",
+                          "relative flex min-h-[230px] flex-col justify-end overflow-hidden rounded-card text-start text-white transition-shadow duration-[400ms]",
                           checked
                             ? "shadow-[0_0_0_3px_var(--mv-bg),0_0_0_5px_var(--mv-primary),0_20px_40px_-16px_rgba(47,91,234,.5)]"
                             : "shadow-card",
@@ -244,7 +244,7 @@ export function WelcomeFlow() {
                         {checked && (
                           <span
                             aria-hidden="true"
-                            className="absolute top-4 right-4 flex size-8 items-center justify-center rounded-full bg-white text-primary shadow-card rtl:right-auto rtl:left-4"
+                            className="absolute end-4 top-4 flex size-8 items-center justify-center rounded-full bg-white text-primary shadow-card"
                           >
                             <Check size={18} strokeWidth={2.4} />
                           </span>

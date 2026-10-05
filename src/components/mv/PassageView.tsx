@@ -36,7 +36,7 @@ export function PassageView({ passage, tone = "surface", unlabelled = false, cla
         dir="rtl"
         className={cx(
           "font-arabic font-medium",
-          onImage ? "text-center text-[calc(clamp(36px,3.6vw,54px)*var(--mv-text-scale,1))] leading-[1.9]" : "text-right text-[calc(30px*var(--mv-text-scale,1))] leading-[1.95]",
+          onImage ? "text-center text-[calc(clamp(36px,3.6vw,54px)*var(--mv-text-scale,1))] leading-[1.9]" : "text-start text-[calc(30px*var(--mv-text-scale,1))] leading-[1.95]",
         )}
       >
         {passage.arabic}
@@ -46,6 +46,8 @@ export function PassageView({ passage, tone = "surface", unlabelled = false, cla
         className={cx("h-0.5 rounded-sm", onImage ? "w-8 self-center bg-white/80" : "w-7 bg-line-strong")}
       />
       <blockquote
+        lang="en"
+        dir="ltr"
         className={cx(
           "font-serif font-medium italic text-balance",
           onImage ? "text-[calc(clamp(28px,2.6vw,40px)*var(--mv-text-scale,1))] leading-[1.3]" : "text-[calc(21px*var(--mv-text-scale,1))] leading-[1.4] text-ink-2",
@@ -56,6 +58,8 @@ export function PassageView({ passage, tone = "surface", unlabelled = false, cla
     </>
   ) : (
     <blockquote
+      lang="en"
+      dir="ltr"
       className={cx(
         "font-serif font-medium text-balance",
         onImage ? "text-[calc(clamp(34px,3.4vw,52px)*var(--mv-text-scale,1))] leading-[1.22] tracking-[-0.01em]" : "text-[calc(25px*var(--mv-text-scale,1))] leading-[1.35]",

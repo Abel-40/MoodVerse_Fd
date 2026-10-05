@@ -146,7 +146,7 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
       type="button"
       onClick={dictation.start}
       aria-label={t("reflect.voiceStartLabel")}
-      className="flex h-11 items-center gap-1.5 rounded-full bg-surface-2 pr-3.5 pl-2.5 text-[13px] font-bold text-ink-2 transition-colors hover:text-ink"
+      className="flex h-11 items-center gap-1.5 rounded-full bg-surface-2 pe-3.5 ps-2.5 text-[13px] font-bold text-ink-2 transition-colors hover:text-ink"
     >
       <Mic size={20} />
       {t("reflect.voiceStart")}
@@ -157,14 +157,14 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
         type="button"
         aria-disabled="true"
         aria-label={VOICE_ENABLED ? t("reflect.voiceUnavailable") : t("reflect.voiceLabel")}
-        className="flex h-11 cursor-default items-center gap-1.5 rounded-full bg-surface-2 pr-3.5 pl-2.5 text-[13px] font-bold text-ink-3"
+        className="flex h-11 cursor-default items-center gap-1.5 rounded-full bg-surface-2 pe-3.5 ps-2.5 text-[13px] font-bold text-ink-3"
       >
         <Mic size={20} />
         {t("reflect.voice")}
       </button>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-full left-0 mb-2 rounded-xl bg-ink px-3 py-2 text-xs font-semibold whitespace-nowrap text-bg opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
+        className="pointer-events-none absolute bottom-full start-0 mb-2 rounded-xl bg-ink px-3 py-2 text-xs font-semibold whitespace-nowrap text-bg opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
       >
         {VOICE_ENABLED ? t("reflect.voiceUnavailable") : t("reflect.voiceLabel")}
       </span>
@@ -232,13 +232,13 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
               <>
                 {/* The live transcript; lighter words may still change. */}
                 <div aria-live="polite" className="mv-field is-focus flex flex-col">
-                  <p className="min-h-[200px] px-[26px] pt-6 pb-2 text-[19px] leading-[29px]">
+                  <p dir="auto" className="min-h-[200px] px-[26px] pt-6 pb-2 text-[19px] leading-[29px]">
                     {text.trim() && `${text.trim()} `}
                     {dictation.finalText}
                     {dictation.interimText && <span className="text-ink-3"> {dictation.interimText}</span>}
                     <span aria-hidden="true" className="mv-caret" />
                   </p>
-                  <div className="flex items-center gap-3.5 pt-2.5 pr-3 pb-3 pl-[18px]">
+                  <div className="flex items-center gap-3.5 pt-2.5 pe-3 pb-3 ps-[18px]">
                     <span className="flex items-center gap-2 text-sm font-extrabold text-primary">
                       <span aria-hidden="true" className="mv-breathe size-2 rounded-full bg-grad [animation-duration:2s]" />
                       <span role="status">{t("reflect.listening")}</span>
@@ -266,6 +266,7 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
                 ref={field}
                 label={t("reflect.fieldLabel")}
                 placeholder={t("reflect.placeholder")}
+                dir="auto"
                 value={text}
                 onChange={(event) => setText(event.target.value)}
                 onKeyDown={onFieldKeyDown}
@@ -273,7 +274,7 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
                 footer={
                   <>
                     {voiceButton}
-                    <span className="pr-2 text-[13px] text-ink-3">
+                    <span className="pe-2 text-[13px] text-ink-3">
                       {online ? t("reflect.wordCount", { n: words }) : t("reflect.offline.saved")}
                     </span>
                   </>

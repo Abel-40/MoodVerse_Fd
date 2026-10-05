@@ -34,7 +34,7 @@ export function Faq() {
                   className="shrink-0 transition-transform duration-[400ms] ease-mv group-open:rotate-180"
                 />
               </summary>
-              <p className="pr-8 pb-6 text-base leading-[1.65] text-ink-2">{t(`${key}.a`)}</p>
+              <p className="pe-8 pb-6 text-base leading-[1.65] text-ink-2">{t(`${key}.a`)}</p>
             </details>
           ))}
         </div>
@@ -79,7 +79,7 @@ export function LandingFooter() {
       <div className="mx-auto flex max-w-content flex-wrap items-center justify-between gap-5 border-t border-line pt-6">
         <div className="flex items-center gap-2.5">
           <Wordmark size={22} labelClassName="text-xl!" />
-          <span className="ml-1.5 text-[13px] text-ink-3">{t("copyright", { year: new Date().getFullYear() })}</span>
+          <span className="ms-1.5 text-[13px] text-ink-3">{t("copyright", { year: new Date().getFullYear() })}</span>
         </div>
         <nav aria-label={t("label")} className="flex flex-wrap gap-x-6 gap-y-1 text-sm font-semibold text-ink-2">
           {FOOTER_LINKS.map(({ key, href }) => (

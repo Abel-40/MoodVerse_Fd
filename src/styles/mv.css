@@ -403,7 +403,8 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 12px 12px 12px 14px;
+    padding-block: 12px;
+    padding-inline: 14px 12px;
     border-radius: 22px;
   }
 
@@ -426,7 +427,7 @@
     display: inline-block;
     width: 2px;
     height: 22px;
-    margin-left: 2px;
+    margin-inline-start: 2px;
     vertical-align: -4px;
     background: var(--mv-primary);
     animation: mv-caret 1s steps(1) infinite;
@@ -474,7 +475,7 @@
     height: 100dvh;
     padding: 24px 16px 20px;
     background: var(--mv-surface);
-    box-shadow: 1px 0 0 var(--mv-line);
+    border-inline-end: 1px solid var(--mv-line);
   }
   .mv-side nav {
     display: flex;
@@ -568,6 +569,7 @@
       height: auto;
       padding: 10px 14px;
       gap: 8px;
+      border-inline-end: 0;
       box-shadow: 0 1px 0 var(--mv-line);
     }
     .mv-side nav {

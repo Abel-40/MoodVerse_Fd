@@ -31,7 +31,7 @@ export default async function SourcesPage() {
           <p className="max-w-[640px] text-[17px] leading-[1.6] text-ink-2">{t("sources.intro")}</p>
         </div>
         <Card bordered className="overflow-x-auto">
-          <table className="w-full text-left text-[15px]">
+          <table className="w-full text-start text-[15px]">
             <thead>
               <tr className="border-b border-line text-[13px] text-ink-3">
                 <th scope="col" className="px-6 py-4 font-bold">{t("sources.tradition")}</th>

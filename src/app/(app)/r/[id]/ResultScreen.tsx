@@ -218,7 +218,7 @@ export function ResultScreen({ id }: { id: number }) {
               </span>
               <ChevronDown size={18} className={cx("shrink-0 transition-transform duration-[400ms] ease-mv group-open:rotate-180")} />
             </summary>
-            <p className="pb-3.5 font-serif text-[19px] leading-7 text-ink-2 italic">“{reflection.text}”</p>
+            <p dir="auto" className="pb-3.5 font-serif text-[19px] leading-7 text-ink-2 italic">“{reflection.text}”</p>
           </details>
         )}
       </aside>

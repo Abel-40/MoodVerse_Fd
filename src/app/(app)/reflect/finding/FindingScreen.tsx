@@ -251,7 +251,7 @@ export function FindingScreen({ guest }: { guest: boolean }) {
         </p>
         {pending && <p className="text-[15px] font-semibold opacity-92">{t(`tradition.${pending.tradition}`)}</p>}
         {preview && (
-          <p className="mt-3.5 max-w-[460px] font-serif text-xl leading-[1.45] italic opacity-92">“{preview}”</p>
+          <p dir="auto" className="mt-3.5 max-w-[460px] font-serif text-xl leading-[1.45] italic opacity-92">“{preview}”</p>
         )}
       </div>
 

@@ -186,12 +186,12 @@ export function DesignSystemSheet() {
                   type="button"
                   aria-disabled="true"
                   aria-label={t("reflect.voiceLabel")}
-                  className="flex h-11 items-center gap-1.5 rounded-full bg-surface-2 pr-3.5 pl-2.5 text-[13px] font-bold text-ink-3"
+                  className="flex h-11 items-center gap-1.5 rounded-full bg-surface-2 pe-3.5 ps-2.5 text-[13px] font-bold text-ink-3"
                 >
                   <Mic size={20} />
                   {t("reflect.voice")}
                 </button>
-                <span className="pr-2 text-[13px] text-ink-3">{t("reflect.wordCount", { n: countWords(text) })}</span>
+                <span className="pe-2 text-[13px] text-ink-3">{t("reflect.wordCount", { n: countWords(text) })}</span>
               </>
             }
           />

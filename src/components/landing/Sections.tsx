@@ -52,7 +52,7 @@ export function HowItWorks() {
           <Image src="/images/misty-morning.jpg" alt="" fill sizes="(min-width: 1100px) 33vw, 100vw" className="object-cover object-[center_40%]" />
           <GlassPanel className="relative w-full rounded-[20px] p-4 text-sm leading-[21px]">
             {t("landing.how.snippet")}
-            <span className="ml-0.5 inline-block h-4 w-0.5 bg-primary align-[-3px]" />
+            <span className="ms-0.5 inline-block h-4 w-0.5 bg-primary align-[-3px]" />
           </GlassPanel>
         </div>
       ),
@@ -79,7 +79,7 @@ export function HowItWorks() {
         <div className="relative flex h-60 flex-col justify-end overflow-hidden p-6 text-white">
           <Image src="/images/dawn-lake.jpg" alt="" fill sizes="(min-width: 1100px) 33vw, 100vw" className="object-cover object-[center_55%]" />
           <div className="mv-scrim absolute inset-0" />
-          <p className="relative font-serif text-[22px] leading-[1.3] font-medium">{opening}</p>
+          <p lang="en" dir="ltr" className="relative font-serif text-[22px] leading-[1.3] font-medium">{opening}</p>
           <span className="relative mt-2 text-[11px] font-extrabold tracking-[.12em] uppercase">
             {passage.reference} · {passage.translationShort ?? passage.translation}
           </span>
@@ -174,12 +174,14 @@ export function Traditions() {
                     <p
                       lang="ar"
                       dir="rtl"
-                      className="text-right font-arabic text-[clamp(30px,2.8vw,40px)] leading-[1.9] font-medium"
+                      className="text-start font-arabic text-[clamp(30px,2.8vw,40px)] leading-[1.9] font-medium"
                     >
                       {passage.arabic}
                     </p>
                   )}
                   <blockquote
+                    lang="en"
+                    dir="ltr"
                     className={cx(
                       "font-serif font-medium",
                       quran
@@ -285,7 +287,7 @@ export function Gallery() {
                 width={198}
                 className="rounded-[22px] shadow-sheet"
               />
-              <span className="pl-1 text-[13px] font-bold text-ink-2">
+              <span className="ps-1 text-[13px] font-bold text-ink-2">
                 {label ? t(`landing.gallery.${label}`) : t(`share.bg.${background}`)}
               </span>
             </li>
