@@ -7,8 +7,11 @@ import { ACCESS_COOKIE, REFRESH_COOKIE } from "@/lib/server/session";
 // Only these backend paths are reachable through the proxy.
 const ALLOWED = [/^auth\/me(\/preferences)?$/, /^api\/v1\/[\w\-/]+$/];
 
+// Reflections, history and account data are personal: no cache may keep them.
+const NO_STORE = { "Cache-Control": "no-store" };
+
 function failure(error: "signedOut" | "unreachable" | "notFound" | "forbidden", status: number) {
-  return NextResponse.json({ error }, { status });
+  return NextResponse.json({ error }, { status, headers: NO_STORE });
 }
 
 /**
@@ -56,7 +59,7 @@ async function forward(request: Request, { params }: { params: Promise<{ path: s
 
     return new NextResponse(response.status === 204 ? null : response.body, {
       status: response.status,
-      headers: { "Content-Type": response.headers.get("content-type") ?? "application/json" },
+      headers: { "Content-Type": response.headers.get("content-type") ?? "application/json", ...NO_STORE },
     });
   } catch {
     return failure("unreachable", 502);
