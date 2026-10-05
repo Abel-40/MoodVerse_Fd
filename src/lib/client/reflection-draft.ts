@@ -48,12 +48,31 @@ export function stagePendingReflection(pending: PendingReflection) {
   window.sessionStorage.setItem(PENDING_KEY, JSON.stringify(pending));
 }
 
-export function takePendingReflection(): PendingReflection | null {
+/** The staged reflection as stored, or "" when there is none. */
+export function readPendingReflection(): string {
   try {
-    const raw = window.sessionStorage.getItem(PENDING_KEY);
-    return raw ? (JSON.parse(raw) as PendingReflection) : null;
+    return window.sessionStorage.getItem(PENDING_KEY) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export function parsePendingReflection(raw: string): PendingReflection | null {
+  try {
+    const value = JSON.parse(raw) as Partial<PendingReflection>;
+    return typeof value.text === "string" && (value.tradition === "bible" || value.tradition === "quran")
+      ? { text: value.text, tradition: value.tradition }
+      : null;
   } catch {
     return null;
+  }
+}
+
+export function discardPendingReflection() {
+  try {
+    window.sessionStorage.removeItem(PENDING_KEY);
+  } catch {
+    // Nothing staged.
   }
 }
 
@@ -66,4 +85,18 @@ export function isLongEnough(text: string): boolean {
 export function countWords(text: string): number {
   const trimmed = text.trim();
   return trimmed ? trimmed.split(/\s+/).length : 0;
+}
+
+/**
+ * The opening of a reflection for a quiet preview (about `max` characters):
+ * ends at a sentence when one finishes late enough, otherwise at a word.
+ */
+export function excerpt(text: string, max = 60): string {
+  const trimmed = text.trim().replace(/\s+/g, " ");
+  if (trimmed.length <= max) return trimmed;
+  const head = trimmed.slice(0, max + 1);
+  const sentenceEnd = Math.max(head.lastIndexOf(". "), head.lastIndexOf("! "), head.lastIndexOf("? "));
+  if (sentenceEnd >= max / 2) return `${head.slice(0, sentenceEnd)}…`;
+  const wordEnd = head.lastIndexOf(" ");
+  return `${(wordEnd > 0 ? head.slice(0, wordEnd) : trimmed.slice(0, max)).replace(/[,;:]$/, "")}…`;
 }

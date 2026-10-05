@@ -17,15 +17,45 @@ interface MockReflection {
   polls: number;
 }
 
-const reflections = new Map<number, MockReflection>();
-let nextId = 9001;
+// Kept in sessionStorage so a reload of a result page still finds it.
+const STORE_KEY = "mv-mock-reflections";
+
+function loadReflections(): Map<number, MockReflection> {
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(STORE_KEY) ?? "[]") as MockReflection[];
+    return new Map(saved.map((reflection) => [reflection.id, reflection]));
+  } catch {
+    return new Map();
+  }
+}
+
+function persist() {
+  sessionStorage.setItem(STORE_KEY, JSON.stringify([...reflections.values()]));
+}
+
+const reflections = loadReflections();
+let nextId = Math.max(9000, ...reflections.keys()) + 1;
 
 // Words that make the mock flag a reflection for the support card.
 const CRISIS_WORDS = /hurt myself|end it|kill myself|don't want to live/i;
+// Include this in a reflection to see the "couldn't find a passage" state.
+const FAIL_MARKER = "[mock:fail]";
 
 function toDto(reflection: MockReflection): ReflectionDto {
   // The first poll says "processing", like the real background worker.
   const done = reflection.polls > 1;
+  if (done && reflection.text.includes(FAIL_MARKER)) {
+    return {
+      id: reflection.id,
+      created_at: reflection.createdAt,
+      text: reflection.text,
+      religion: reflection.religion,
+      status: "failed",
+      error: "mock failure",
+      analysis: null,
+      results: [],
+    };
+  }
   const passage = SAMPLE_PASSAGES[reflection.religion];
   return {
     id: reflection.id,
@@ -85,6 +115,7 @@ export const handlers = [
       polls: 0,
     };
     reflections.set(reflection.id, reflection);
+    persist();
     return HttpResponse.json<SubmitDto>({ reflection_id: reflection.id, status: "pending" }, { status: 202 });
   }),
 
@@ -101,6 +132,7 @@ export const handlers = [
     const reflection = reflections.get(Number(params.id));
     if (!reflection) return HttpResponse.json({ detail: "No reflection with that id." }, { status: 404 });
     reflection.polls += 1;
+    persist();
     return HttpResponse.json(toDto(reflection));
   }),
 

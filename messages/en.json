@@ -110,14 +110,34 @@
       "save": "Save",
       "saved": "Saved",
       "share": "Share",
-      "showAnother": "Show another"
+      "showAnother": "Show another",
+      "savePassage": "Save passage",
+      "shareCard": "Share card",
+      "label": "Actions"
     },
     "whyTemplate": "You described {emotions}. This passage speaks to {need}.",
     "whyEmotionsOnly": "You described {emotions}.",
-    "whyNeedOnly": "This passage speaks to {need}."
+    "whyNeedOnly": "This passage speaks to {need}.",
+    "newReflection": "New reflection",
+    "feedback": {
+      "question": "Did this help?",
+      "helped": "This helped",
+      "notQuite": "Not quite",
+      "thanks": "Thank you for telling us.",
+      "change": "Change",
+      "reasonsLabel": "What didn’t fit? (optional)",
+      "reasons": {
+        "didnt_fit": "Didn’t fit how I feel",
+        "hard_to_understand": "Hard to understand",
+        "other": "Something else"
+      }
+    },
+    "about": "About this passage",
+    "yourReflection": "Your reflection · only you can see this"
   },
   "detail": {
-    "delete": "Delete this reflection"
+    "delete": "Delete this reflection",
+    "title": "Your reflection · Only you can see this"
   },
   "emotions": {
     "loneliness": "Loneliness",
@@ -397,5 +417,31 @@
     "direction": "direction",
     "thanks": "gratitude",
     "support": "support"
+  },
+  "finding": {
+    "title": "Finding a passage",
+    "cancel": "Cancel",
+    "guest": {
+      "title": "Sign in to find a passage",
+      "body": "Choosing a passage needs an account for now. Your words stay safe in this browser while you sign in.",
+      "signIn": "Sign in",
+      "back": "Back to my reflection"
+    }
+  },
+  "error": {
+    "title": "We couldn’t find a passage just now",
+    "body": "Something went wrong on our side. Your reflection is still here; nothing was lost.",
+    "edit": "Edit reflection",
+    "retry": "Try again",
+    "report": "Tell us if this keeps happening",
+    "reportSubject": "MoodVerse: couldn’t find a passage",
+    "notFound": "We couldn’t find that reflection.",
+    "backToReflect": "Write a new reflection"
+  },
+  "support": {
+    "title": "You don’t have to carry this alone",
+    "body": "It sounds like things feel very heavy right now. If you’re thinking about harming yourself, please reach out to someone you trust or a local support line today.",
+    "cta": "Find support near you",
+    "notNow": "Not now"
   }
 }

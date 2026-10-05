@@ -112,6 +112,9 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
       return;
     }
     if (!online) return;
+    // Keep the words even if the debounce hasn't run, so Cancel and
+    // "Edit reflection" always come back to them.
+    void saveDraft(text);
     // The text travels in sessionStorage, never in the URL.
     stagePendingReflection({ text: text.trim(), tradition });
     router.push("/reflect/finding");

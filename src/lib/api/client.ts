@@ -21,21 +21,24 @@ export class ApiError extends Error {
 interface ApiOptions {
   method?: "GET" | "POST" | "PATCH" | "DELETE";
   json?: unknown;
+  signal?: AbortSignal;
 }
 
 /**
  * Call the backend through the same-origin proxy: `apiFetch("api/v1/...")`
  * reaches `<backend>/api/v1/...` with this session's credentials attached.
  */
-export async function apiFetch<T>(path: string, { method = "GET", json }: ApiOptions = {}): Promise<T> {
+export async function apiFetch<T>(path: string, { method = "GET", json, signal }: ApiOptions = {}): Promise<T> {
   let response: Response;
   try {
     response = await fetch(`/api/mv/${path.replace(/^\/+/, "")}`, {
       method,
       headers: json === undefined ? undefined : { "Content-Type": "application/json" },
       body: json === undefined ? undefined : JSON.stringify(json),
+      signal,
     });
-  } catch {
+  } catch (error) {
+    if (signal?.aborted) throw error;
     throw new ApiError(0, "unreachable");
   }
 
