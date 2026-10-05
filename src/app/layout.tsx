@@ -5,6 +5,7 @@ import { LucideProvider } from "lucide-react";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 
+import { AppProviders } from "@/components/AppProviders";
 import { PREFERENCES_SCRIPT } from "@/lib/preferences";
 import { PreferencesSync } from "@/lib/use-preferences";
 import "./globals.css";
@@ -51,7 +52,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       <body>
         <NextIntlClientProvider>
-          <LucideProvider strokeWidth={1.75}>{children}</LucideProvider>
+          <LucideProvider strokeWidth={1.75}>
+            <AppProviders>{children}</AppProviders>
+          </LucideProvider>
         </NextIntlClientProvider>
         <PreferencesSync />
       </body>

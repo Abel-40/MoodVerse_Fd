@@ -111,7 +111,10 @@
       "saved": "Saved",
       "share": "Share",
       "showAnother": "Show another"
-    }
+    },
+    "whyTemplate": "You described {emotions}. This passage speaks to {need}.",
+    "whyEmotionsOnly": "You described {emotions}.",
+    "whyNeedOnly": "This passage speaks to {need}."
   },
   "detail": {
     "delete": "Delete this reflection"
@@ -130,7 +133,11 @@
     "hope": "Hope",
     "gratitude": "Gratitude",
     "joy": "Joy",
-    "peace": "Peace"
+    "peace": "Peace",
+    "awe": "Awe",
+    "confusion": "Confusion",
+    "despair": "Despair",
+    "shame": "Shame"
   },
   "needs": {
     "comfort": "Seeking comfort",
@@ -380,5 +387,15 @@
       "bible": "King James Version · more in Settings",
       "quran": "Arabic with Pickthall translation"
     }
+  },
+  "whyNeed": {
+    "comfort": "comfort",
+    "reassurance": "reassurance",
+    "calm": "calm",
+    "strength": "strength",
+    "forgiveness": "forgiveness",
+    "direction": "direction",
+    "thanks": "gratitude",
+    "support": "support"
   }
 }

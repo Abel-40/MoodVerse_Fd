@@ -26,3 +26,11 @@ export const SAMPLE_PASSAGES: Record<Tradition, Passage> = {
 
 export const SAMPLE_REFLECTION =
   "I moved to a new city for work and I feel so alone. I keep wondering if I made the wrong choice.";
+
+/** The brief's sample "Why this passage" notes. Not scripture. */
+export const SAMPLE_WHY: Record<Tradition, string> = {
+  bible:
+    "You described loneliness and doubt after a big change. This psalm speaks to God’s nearness in exactly those moments.",
+  quran:
+    "You described loneliness and doubt after a big change. These verses say twice that ease comes with hardship.",
+};
