@@ -2,7 +2,14 @@
 
 import { useCallback, useEffect, useSyncExternalStore } from "react";
 
-import { MOTION_COOKIE, THEME_COOKIE, type ThemePreference } from "./preferences";
+import {
+  DEFAULT_TEXT_SIZE,
+  MOTION_COOKIE,
+  TEXT_COOKIE,
+  TEXT_SCALES,
+  THEME_COOKIE,
+  type ThemePreference,
+} from "./preferences";
 
 const ONE_YEAR = 60 * 60 * 24 * 365;
 const DARK_QUERY = "(prefers-color-scheme: dark)";
@@ -35,6 +42,11 @@ function readGentleMotion(): boolean {
   return readCookie(MOTION_COOKIE) !== "reduced";
 }
 
+function readTextSize(): number {
+  const value = Number(readCookie(TEXT_COOKIE));
+  return value >= 1 && value <= TEXT_SCALES.length ? value : DEFAULT_TEXT_SIZE;
+}
+
 function applyTheme(preference: ThemePreference) {
   const resolved =
     preference === "system"
@@ -53,6 +65,7 @@ function applyTheme(preference: ThemePreference) {
 export function usePreferences() {
   const theme = useSyncExternalStore(subscribe, readTheme, () => "system" as const);
   const gentleMotion = useSyncExternalStore(subscribe, readGentleMotion, () => true);
+  const textSize = useSyncExternalStore(subscribe, readTextSize, () => DEFAULT_TEXT_SIZE);
 
   const setTheme = useCallback((preference: ThemePreference) => {
     applyTheme(preference);
@@ -65,7 +78,13 @@ export function usePreferences() {
     writeCookie(MOTION_COOKIE, on ? "full" : "reduced");
   }, []);
 
-  return { theme, setTheme, gentleMotion, setGentleMotion };
+  /** 1 to 5; scales passages and reading text through --mv-text-scale. */
+  const setTextSize = useCallback((size: number) => {
+    document.documentElement.style.setProperty("--mv-text-scale", String(TEXT_SCALES[size - 1] ?? 1));
+    writeCookie(TEXT_COOKIE, String(size));
+  }, []);
+
+  return { theme, setTheme, gentleMotion, setGentleMotion, textSize, setTextSize };
 }
 
 /** Follows the OS between light and dark while the preference is "system". */

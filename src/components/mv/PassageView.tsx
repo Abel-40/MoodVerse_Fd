@@ -36,7 +36,7 @@ export function PassageView({ passage, tone = "surface", unlabelled = false, cla
         dir="rtl"
         className={cx(
           "font-arabic font-medium",
-          onImage ? "text-center text-[clamp(36px,3.6vw,54px)] leading-[1.9]" : "text-right text-[30px] leading-[1.95]",
+          onImage ? "text-center text-[calc(clamp(36px,3.6vw,54px)*var(--mv-text-scale,1))] leading-[1.9]" : "text-right text-[calc(30px*var(--mv-text-scale,1))] leading-[1.95]",
         )}
       >
         {passage.arabic}
@@ -48,7 +48,7 @@ export function PassageView({ passage, tone = "surface", unlabelled = false, cla
       <blockquote
         className={cx(
           "font-serif font-medium italic text-balance",
-          onImage ? "text-[clamp(28px,2.6vw,40px)] leading-[1.3]" : "text-[21px] leading-[1.4] text-ink-2",
+          onImage ? "text-[calc(clamp(28px,2.6vw,40px)*var(--mv-text-scale,1))] leading-[1.3]" : "text-[calc(21px*var(--mv-text-scale,1))] leading-[1.4] text-ink-2",
         )}
       >
         {passage.text}
@@ -58,7 +58,7 @@ export function PassageView({ passage, tone = "surface", unlabelled = false, cla
     <blockquote
       className={cx(
         "font-serif font-medium text-balance",
-        onImage ? "text-[clamp(34px,3.4vw,52px)] leading-[1.22] tracking-[-0.01em]" : "text-[25px] leading-[1.35]",
+        onImage ? "text-[calc(clamp(34px,3.4vw,52px)*var(--mv-text-scale,1))] leading-[1.22] tracking-[-0.01em]" : "text-[calc(25px*var(--mv-text-scale,1))] leading-[1.35]",
       )}
     >
       {passage.text}

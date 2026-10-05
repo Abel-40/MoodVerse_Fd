@@ -19,7 +19,8 @@ interface WhyCardProps {
  * "Why this passage" and what was noticed. Without a server-written note, the
  * sentence comes from the kit's reviewed template and fixed vocabulary only.
  */
-export function WhyCard({ why, emotions, need, className }: WhyCardProps) {
+/** The "Why this passage" sentence: the server's note, or the reviewed template. */
+export function useWhySentence(why: string | null, emotions: Emotion[], need: Need | null): string | null {
   const t = useTranslations();
   const locale = useLocale();
   const listed = new Intl.ListFormat(locale, { type: "conjunction" }).format(
@@ -35,13 +36,19 @@ export function WhyCard({ why, emotions, need, className }: WhyCardProps) {
         : needWord
           ? t("result.whyNeedOnly", { need: needWord })
           : null);
+  return sentence;
+}
+
+export function WhyCard({ why, emotions, need, className }: WhyCardProps) {
+  const t = useTranslations();
+  const sentence = useWhySentence(why, emotions, need);
 
   if (!sentence && emotions.length === 0) return null;
 
   return (
     <section className={cx("flex flex-col gap-3", className)}>
       <h2 className="mv-overline">{t("result.why")}</h2>
-      {sentence && <p className="text-[17px] leading-[27px] text-ink">{sentence}</p>}
+      {sentence && <p className="text-[calc(17px*var(--mv-text-scale,1))] leading-[1.6] text-ink">{sentence}</p>}
       {(emotions.length > 0 || need) && (
         <ul aria-label={t("result.noticed")} className="flex flex-wrap gap-2">
           {emotions.map((emotion) => (

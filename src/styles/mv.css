@@ -268,8 +268,8 @@
     resize: none;
     border: 0;
     background: transparent;
-    font-size: 19px;
-    line-height: 29px;
+    font-size: calc(19px * var(--mv-text-scale, 1));
+    line-height: calc(29px * var(--mv-text-scale, 1));
   }
   .mv-field > textarea:focus {
     outline: none;
@@ -277,8 +277,8 @@
   .mv-field-compact > textarea {
     min-height: 0;
     padding: 20px;
-    font-size: 17px;
-    line-height: 26px;
+    font-size: calc(17px * var(--mv-text-scale, 1));
+    line-height: calc(26px * var(--mv-text-scale, 1));
   }
 
   /* surfaces */

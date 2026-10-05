@@ -10,7 +10,8 @@ import { cx } from "@/lib/cx";
 import { Button } from "./Button";
 import { FilterChip } from "./Chip";
 
-type Answer = { helped: true } | { helped: false; reason?: FeedbackReason };
+export type FeedbackAnswer = { helped: true } | { helped: false; reason?: FeedbackReason };
+type Answer = FeedbackAnswer;
 
 const REASONS: FeedbackReason[] = ["didnt_fit", "hard_to_understand", "other"];
 
@@ -18,6 +19,15 @@ const REASONS: FeedbackReason[] = ["didnt_fit", "hard_to_understand", "other"];
 // here too, to show it again on the next visit.
 function storageKey(reflectionId: number, passageId: string) {
   return `mv-feedback:${reflectionId}:${passageId}`;
+}
+
+/** The answer given for a passage on this browser, if any. */
+export function readFeedback(reflectionId: number, passageId: string): FeedbackAnswer | null {
+  try {
+    return readAnswer(storageKey(reflectionId, passageId));
+  } catch {
+    return null;
+  }
 }
 
 function readAnswer(key: string): Answer | null {
