@@ -11,6 +11,8 @@ interface PassageViewProps {
    * surface: a card in lists and panels, on surface colours.
    */
   tone?: "onImage" | "surface";
+  /** Leave the label to a labelled wrapper, so it isn't read twice. */
+  unlabelled?: boolean;
   className?: string;
 }
 
@@ -20,12 +22,12 @@ interface PassageViewProps {
  * Newsreader; Quran text is the Arabic (right to left, Noto Naskh), a short
  * rule, then the translation in italics.
  */
-export function PassageView({ passage, tone = "surface", className }: PassageViewProps) {
+export function PassageView({ passage, tone = "surface", unlabelled = false, className }: PassageViewProps) {
   const t = useTranslations();
   const onImage = tone === "onImage";
   const quran = passage.tradition === "quran";
   const translation = quran ? t("passage.translationName", { name: passage.translation }) : passage.translation;
-  const label = t("passage.label", { reference: passage.reference, translation });
+  const label = unlabelled ? undefined : t("passage.label", { reference: passage.reference, translation });
 
   const body = quran ? (
     <>
