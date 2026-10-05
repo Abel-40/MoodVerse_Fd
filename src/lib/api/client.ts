@@ -18,6 +18,9 @@ export class ApiError extends Error {
   }
 }
 
+/** Fired on window when a call comes back signed out (see SessionExpiredDialog). */
+export const SIGNED_OUT_EVENT = "mv:signed-out";
+
 interface ApiOptions {
   method?: "GET" | "POST" | "PATCH" | "DELETE";
   json?: unknown;
@@ -43,6 +46,7 @@ export async function apiFetch<T>(path: string, { method = "GET", json, signal }
   }
 
   if (!response.ok) {
+    if (response.status === 401) window.dispatchEvent(new Event(SIGNED_OUT_EVENT));
     const body = (await response.json().catch(() => ({}))) as { error?: string; detail?: unknown };
     throw new ApiError(response.status, body.error ?? (typeof body.detail === "string" ? body.detail : "http_error"));
   }

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { redirect } from "next/navigation";
 
+import { SessionExpiredDialog } from "@/components/auth/SessionExpiredDialog";
 import { Sidebar, type Account } from "@/components/mv/Sidebar";
 import { getAccount } from "@/lib/server/account";
 
@@ -19,6 +20,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
       <main id="content" tabIndex={-1} className="mv-pane">
         {children}
       </main>
+      {account.kind === "user" && <SessionExpiredDialog />}
     </div>
   );
 }

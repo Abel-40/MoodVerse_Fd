@@ -11,13 +11,15 @@ interface MessagePanelProps {
   actions: ReactNode;
   /** A quieter link under the buttons. */
   footer?: ReactNode;
+  /** Announce it as it appears; off when the panel is the whole page. */
+  alert?: boolean;
 }
 
 /**
  * A glass card over soft clouds filling the pane: what a screen shows when it
  * can't show its content (couldn't find a passage, needs sign-in, not found).
  */
-export function MessagePanel({ icon, title, body, actions, footer }: MessagePanelProps) {
+export function MessagePanel({ icon, title, body, actions, footer, alert = true }: MessagePanelProps) {
   return (
     <div className="relative flex h-full min-h-[640px] items-center justify-center overflow-hidden px-6 py-10 text-ink">
       <Image
@@ -31,7 +33,7 @@ export function MessagePanel({ icon, title, body, actions, footer }: MessagePane
       <div aria-hidden="true" className="absolute inset-0 bg-white/15" />
       <GlassPanel
         as="section"
-        role="alert"
+        role={alert ? "alert" : undefined}
         className="mv-fade-in relative flex w-full max-w-[520px] flex-col items-center gap-3.5 rounded-[36px] px-9 pt-10 pb-[30px] text-center max-[440px]:px-6"
       >
         <IconBadge className="size-16 rounded-[22px]">{icon}</IconBadge>

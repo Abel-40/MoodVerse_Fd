@@ -550,6 +550,23 @@
       "back": "Back to my reflection"
     }
   },
+  "busy": {
+    "title": "Let’s pause for a moment",
+    "body": "You can reflect again in a few minutes. Your reflection is still here.",
+    "back": "Back to my reflection"
+  },
+  "session": {
+    "title": "Your session has ended",
+    "body": "For your privacy, sessions end after a while. Sign in again to carry on; anything you were writing stays in this browser.",
+    "signIn": "Sign in again",
+    "notNow": "Not now"
+  },
+  "notFound": {
+    "title": "This page drifted away",
+    "body": "The link may be out of date, or the page may have moved.",
+    "reflect": "Go to Reflect",
+    "home": "MoodVerse home"
+  },
   "error": {
     "title": "We couldn’t find a passage just now",
     "body": "Something went wrong on our side. Your reflection is still here; nothing was lost.",

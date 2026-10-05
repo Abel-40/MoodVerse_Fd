@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
+import { getSessionKind } from "@/lib/server/session";
+
 import { ResultScreen } from "./ResultScreen";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,5 +14,5 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ResultPage({ params }: { params: Promise<{ id: string }> }) {
   const id = Number((await params).id);
   if (!Number.isInteger(id) || id <= 0) notFound();
-  return <ResultScreen id={id} />;
+  return <ResultScreen id={id} guest={(await getSessionKind()) === "guest"} />;
 }

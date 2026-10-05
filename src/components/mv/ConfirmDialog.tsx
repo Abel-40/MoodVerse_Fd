@@ -15,11 +15,13 @@ interface ConfirmDialogProps {
   /** Ask the person to type this word before the danger button works. */
   typedConfirmation?: { word: string; label: string };
   busy?: boolean;
+  /** "danger" for destructive actions; "primary" when nothing is lost. */
+  tone?: "danger" | "primary";
 }
 
 /**
- * A modal confirmation for destructive actions, on the native <dialog>: focus
- * is trapped, Escape closes it, and focus returns to what opened it.
+ * A modal confirmation, on the native <dialog>: focus is trapped, Escape
+ * closes it, and focus returns to what opened it.
  */
 export function ConfirmDialog({
   open,
@@ -31,6 +33,7 @@ export function ConfirmDialog({
   onClose,
   typedConfirmation,
   busy = false,
+  tone = "danger",
 }: ConfirmDialogProps) {
   const dialog = useRef<HTMLDialogElement>(null);
   const ids = { title: useId(), body: useId(), input: useId() };
@@ -88,7 +91,7 @@ export function ConfirmDialog({
           <Button variant="secondary" size="sm" onClick={() => dialog.current?.close()}>
             {cancelLabel}
           </Button>
-          <Button type="submit" variant="danger" size="sm" aria-disabled={!confirmed || busy || undefined}>
+          <Button type="submit" variant={tone} size="sm" aria-disabled={!confirmed || busy || undefined}>
             {confirmLabel}
           </Button>
         </div>

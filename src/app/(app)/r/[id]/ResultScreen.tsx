@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Bookmark, ChevronDown, ChevronLeft, CircleAlert, Lock, LogIn, RefreshCw, Share, SearchX } from "lucide-react";
+import { Bookmark, ChevronDown, ChevronLeft, CircleAlert, Lock, RefreshCw, Share, SearchX } from "lucide-react";
 
+import { SignInPanel } from "@/components/auth/SignInPanel";
 import { BreathingSun } from "@/components/mv/BreathingSun";
 import { Button, ButtonLink } from "@/components/mv/Button";
 import { FeedbackBox } from "@/components/mv/FeedbackBox";
@@ -23,7 +24,7 @@ const PANEL_IMAGE = { bible: "/images/calm-sea.jpg", quran: "/images/misty-morni
 const SUPPORT_IMAGE = "/images/dawn-lake.jpg";
 const SIDE_SIZES = "(max-width: 1180px) 100vw, calc(100vw - 676px)";
 
-export function ResultScreen({ id }: { id: number }) {
+export function ResultScreen({ id, guest }: { id: number; guest: boolean }) {
   const t = useTranslations();
   const { data: reflection, error, refetch } = useReflection(id);
   const saved = useSaved();
@@ -33,23 +34,7 @@ export function ResultScreen({ id }: { id: number }) {
   const [index, setIndex] = useState(0);
 
   if (error) {
-    if (error instanceof ApiError && error.signedOut) {
-      return (
-        <MessagePanel
-          icon={<LogIn size={28} />}
-          title={t("finding.guest.title")}
-          body={t("finding.guest.body")}
-          actions={
-            <>
-              <ButtonLink href="/reflect" variant="secondary">
-                {t("finding.guest.back")}
-              </ButtonLink>
-              <ButtonLink href="/sign-in">{t("finding.guest.signIn")}</ButtonLink>
-            </>
-          }
-        />
-      );
-    }
+    if (error instanceof ApiError && error.signedOut) return <SignInPanel expired={!guest} />;
     const missing = error instanceof ApiError && error.status === 404;
     return (
       <MessagePanel

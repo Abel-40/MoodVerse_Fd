@@ -4,8 +4,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
-import { CircleAlert, LogIn } from "lucide-react";
+import { CircleAlert, Hourglass } from "lucide-react";
 
+import { SignInPanel } from "@/components/auth/SignInPanel";
 import { BreathingSun } from "@/components/mv/BreathingSun";
 import { Button, ButtonLink } from "@/components/mv/Button";
 import { MessagePanel } from "@/components/mv/MessagePanel";
@@ -29,7 +30,7 @@ const POLL_MS = 1000;
 const GIVE_UP_MS = 90_000;
 const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL;
 
-type Phase = "finding" | "failed" | "signIn" | "leaving";
+type Phase = "finding" | "failed" | "busy" | "signIn" | "leaving";
 
 const noSubscription = () => () => {};
 
@@ -160,7 +161,8 @@ export function FindingScreen({ guest }: { guest: boolean }) {
       })
       .catch((error: unknown) => {
         if (local.signal.aborted || current.controller.signal.aborted) return;
-        setPhase(error instanceof ApiError && error.signedOut ? "signIn" : "failed");
+        if (!(error instanceof ApiError)) setPhase("failed");
+        else setPhase(error.signedOut ? "signIn" : error.status === 429 ? "busy" : "failed");
       });
 
     return () => {
@@ -182,19 +184,18 @@ export function FindingScreen({ guest }: { guest: boolean }) {
 
   const preview = pending ? excerpt(pending.text) : "";
 
-  if (phase === "signIn") {
+  if (phase === "signIn") return <SignInPanel expired={!guest} />;
+
+  if (phase === "busy") {
     return (
       <MessagePanel
-        icon={<LogIn size={28} />}
-        title={t("finding.guest.title")}
-        body={t("finding.guest.body")}
+        icon={<Hourglass size={28} />}
+        title={t("busy.title")}
+        body={t("busy.body")}
         actions={
-          <>
-            <ButtonLink href="/reflect" variant="secondary">
-              {t("finding.guest.back")}
-            </ButtonLink>
-            <ButtonLink href="/sign-in">{t("finding.guest.signIn")}</ButtonLink>
-          </>
+          <ButtonLink href="/reflect" className="col-span-full">
+            {t("busy.back")}
+          </ButtonLink>
         }
       />
     );
