@@ -110,7 +110,7 @@ function PhoneMockup() {
 
           <div className="absolute inset-x-4 top-[54px] flex items-center justify-between">
             <span className="mv-btn mv-btn-glass mv-btn-icon size-11!">
-              <ChevronLeft size={22} strokeWidth={1.8} />
+              <ChevronLeft size={22} strokeWidth={1.8} className="rtl:-scale-x-100" />
             </span>
             <span className="mv-glass-dark flex h-[34px] items-center rounded-full px-3.5 text-xs font-extrabold tracking-[.12em] uppercase">
               {t("tradition.bible")}

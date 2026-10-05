@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { AppProviders } from "@/components/AppProviders";
+import { isRtl } from "@/i18n/locales";
 import { PREFERENCES_SCRIPT } from "@/lib/preferences";
 import { PreferencesSync } from "@/lib/use-preferences";
 import "./globals.css";
@@ -43,7 +44,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     // which React would otherwise report as a mismatch.
     <html
       lang={locale}
-      dir={locale === "ar" ? "rtl" : "ltr"}
+      dir={isRtl(locale) ? "rtl" : "ltr"}
       data-scroll-behavior="smooth"
       className={`${newsreader.variable} ${jakarta.variable} ${naskh.variable}`}
       suppressHydrationWarning

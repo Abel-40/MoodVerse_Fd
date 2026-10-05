@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useState, useSyncExternalStore, type ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { BookOpen, ChevronRight, ShieldCheck, User } from "lucide-react";
 
 import { Button, ButtonLink } from "@/components/mv/Button";
@@ -14,6 +14,7 @@ import { Slider } from "@/components/mv/Slider";
 import { Card, GlassPanel, IconBadge } from "@/components/mv/Surfaces";
 import { Toast } from "@/components/mv/Toast";
 import { Toggle } from "@/components/mv/Toggle";
+import { LOCALE_COOKIE, LOCALES, type Locale } from "@/i18n/locales";
 import { useSetDefaultTradition } from "@/lib/api/hooks";
 import { deleteMyData, exportFileName, exportMyData } from "@/lib/client/my-data";
 import { readDefaultTradition, storeDefaultTradition } from "@/lib/client/session";
@@ -74,9 +75,11 @@ export function SettingsScreen({ account }: { account: SettingsAccount }) {
     bible: useId(),
     quran: useId(),
     size: useId(),
+    language: useId(),
     theme: useId(),
     motion: useId(),
   };
+  const locale = useLocale() as Locale;
   const { theme, setTheme, gentleMotion, setGentleMotion, textSize, setTextSize } = usePreferences();
   const setDefaultTradition = useSetDefaultTradition();
   const guestTradition = useSyncExternalStore(noSubscription, readDefaultTradition, () => null);
@@ -286,6 +289,27 @@ export function SettingsScreen({ account }: { account: SettingsAccount }) {
               <h2 id="s-appearance" className="px-[22px] pt-5 pb-1 text-lg font-extrabold">
                 {t("settings.sections.appearance")}
               </h2>
+              {LOCALES.length > 1 && (
+                <Row>
+                  <Label id={ids.language} title={t("settings.language.label")} />
+                  <Segmented<Locale>
+                    size="sm"
+                    aria-labelledby={ids.language}
+                    options={LOCALES.map((value) => ({
+                      value,
+                      // Each language is named in itself, and read out that way.
+                      label: <span lang={value}>{t(`settings.language.${value}`)}</span>,
+                    }))}
+                    value={locale}
+                    onChange={(next) => {
+                      document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
+                      // The server picks the messages, lang and dir for the new language.
+                      router.refresh();
+                    }}
+                    className="w-[320px] max-w-full"
+                  />
+                </Row>
+              )}
               <Row>
                 <Label id={ids.theme} title={t("settings.theme.label")} />
                 <Segmented<ThemePreference>

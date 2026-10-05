@@ -1,10 +1,11 @@
 "use client";
 
 import { useId } from "react";
+import { useLocale } from "next-intl";
 
 /*
- * Text that depends on the visitor's clock, time zone and locale: today's
- * date, the greeting, "Tuesday". The server can't know these, so (following
+ * Text that depends on the visitor's clock and time zone: today's date, the
+ * greeting, "Tuesday" (formatted in the app's language). The server can't know these, so (following
  * Next's "preventing flash before hydration" guide) the server renders its
  * own value and an inline script replaces it before first paint. React then
  * hydrates against the corrected text.
@@ -14,8 +15,8 @@ import { useId } from "react";
  * imports and outer variables.
  */
 
-function formatToday(): string {
-  return new Date().toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long" });
+function formatToday(locale: string): string {
+  return new Date().toLocaleDateString(locale, { weekday: "long", day: "numeric", month: "long" });
 }
 
 function formatGreeting(labels: { morning: string; afternoon: string; evening: string }): string {
@@ -23,7 +24,7 @@ function formatGreeting(labels: { morning: string; afternoon: string; evening: s
   return hour < 12 ? labels.morning : hour < 18 ? labels.afternoon : labels.evening;
 }
 
-function formatDay(iso: string, labels: { today: string; yesterday: string }): string {
+function formatDay(iso: string, labels: { today: string; yesterday: string }, locale: string): string {
   const then = new Date(iso);
   const now = new Date();
   const days = Math.round(
@@ -33,8 +34,8 @@ function formatDay(iso: string, labels: { today: string; yesterday: string }): s
   );
   if (days === 0) return labels.today;
   if (days === 1) return labels.yesterday;
-  if (days < 7) return then.toLocaleDateString(undefined, { weekday: "long" });
-  return then.toLocaleDateString(undefined, { day: "numeric", month: "long" });
+  if (days < 7) return then.toLocaleDateString(locale, { weekday: "long" });
+  return then.toLocaleDateString(locale, { day: "numeric", month: "long" });
 }
 
 /** Rendered on the server only; the client keeps whatever text is in place. */
@@ -69,9 +70,10 @@ function LocalText<A extends unknown[]>({
   );
 }
 
-/** "Thursday, 1 October", in the visitor's locale. */
+/** "Thursday, October 1", on the visitor's clock. */
 export function TodayDate({ className }: { className?: string }) {
-  return <LocalText format={formatToday} args={[]} className={className} />;
+  const locale = useLocale();
+  return <LocalText format={formatToday} args={[locale]} className={className} />;
 }
 
 /** Good morning / afternoon / evening, by the visitor's local time. */
@@ -95,5 +97,6 @@ export function RelativeDay({
   labels: { today: string; yesterday: string };
   className?: string;
 }) {
-  return <LocalText format={formatDay} args={[iso, labels]} className={className} />;
+  const locale = useLocale();
+  return <LocalText format={formatDay} args={[iso, labels, locale]} className={className} />;
 }
