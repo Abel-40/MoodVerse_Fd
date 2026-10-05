@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Bookmark, ChevronDown, ChevronLeft, CircleAlert, Lock, LogIn, RefreshCw, Share, SearchX } from "lucide-react";
@@ -10,6 +9,7 @@ import { Button, ButtonLink } from "@/components/mv/Button";
 import { FeedbackBox } from "@/components/mv/FeedbackBox";
 import { MessagePanel } from "@/components/mv/MessagePanel";
 import { PassageView } from "@/components/mv/PassageView";
+import { SceneImage } from "@/components/mv/SceneImage";
 import { SupportCard } from "@/components/mv/SupportCard";
 import { GlassPanel } from "@/components/mv/Surfaces";
 import { WhyCard } from "@/components/mv/WhyCard";
@@ -74,7 +74,7 @@ export function ResultScreen({ id }: { id: number }) {
         aria-busy="true"
         className="relative flex h-full min-h-[640px] flex-col items-center justify-center gap-9 overflow-hidden px-6 py-10 text-white"
       >
-        <Image src="/images/hero-dawn.jpg" alt="" fill loading="eager" sizes={SIDE_SIZES} className="mv-drift object-cover" />
+        <SceneImage src="/images/hero-dawn.jpg" loading="eager" sizes={SIDE_SIZES} className="mv-drift object-cover" />
         <div aria-hidden="true" className="absolute inset-0 bg-[rgba(16,14,48,.35)]" />
         <BreathingSun className="relative" />
         <p role="status" className="relative font-serif text-[40px] font-medium">
@@ -108,22 +108,12 @@ export function ResultScreen({ id }: { id: number }) {
   return (
     <div className="mv-split h-full max-[1180px]:h-auto">
       <div className="relative flex min-h-[640px] flex-col overflow-hidden px-[clamp(24px,4vw,64px)] pt-7 pb-12 text-white max-[1180px]:min-h-[70vh]">
-        <Image
+        <SceneImage
           src={reflection.support ? SUPPORT_IMAGE : PANEL_IMAGE[passage.tradition]}
-          alt=""
-          fill
           preload
           loading="eager"
           sizes={SIDE_SIZES}
-          className="mv-drift object-cover object-[center_55%] dark:hidden"
-        />
-        <Image
-          src="/images/starry-night.jpg"
-          alt=""
-          fill
-          loading="eager"
-          sizes={SIDE_SIZES}
-          className="mv-drift hidden object-cover object-[center_55%] dark:block"
+          className="mv-drift object-cover object-[center_55%]"
         />
         <div
           aria-hidden="true"

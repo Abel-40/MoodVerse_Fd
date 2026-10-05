@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useState, useSyncExternalStore, type ReactNode } from "react";
@@ -9,6 +8,7 @@ import { BookOpen, ChevronRight, ShieldCheck, User } from "lucide-react";
 
 import { Button, ButtonLink } from "@/components/mv/Button";
 import { ConfirmDialog } from "@/components/mv/ConfirmDialog";
+import { SceneImage } from "@/components/mv/SceneImage";
 import { Segmented } from "@/components/mv/Segmented";
 import { Slider } from "@/components/mv/Slider";
 import { Card, GlassPanel, IconBadge } from "@/components/mv/Surfaces";
@@ -186,10 +186,8 @@ export function SettingsScreen({ account }: { account: SettingsAccount }) {
               aria-label={t("settings.sections.account")}
               className="relative flex scroll-mt-6 flex-wrap items-center gap-4 overflow-hidden rounded-card px-6 py-[22px] text-white"
             >
-              <Image
+              <SceneImage
                 src="/images/dawn-lake.jpg"
-                alt=""
-                fill
                 loading="eager"
                 sizes="(max-width: 760px) 100vw, 800px"
                 className="object-cover object-[center_40%]"

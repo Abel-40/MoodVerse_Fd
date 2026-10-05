@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
@@ -11,6 +10,7 @@ import { Banner } from "@/components/mv/Banner";
 import { Button } from "@/components/mv/Button";
 import { Field } from "@/components/mv/Field";
 import { Greeting, RelativeDay, TodayDate } from "@/components/mv/LocalTime";
+import { SceneImage } from "@/components/mv/SceneImage";
 import { Segmented } from "@/components/mv/Segmented";
 import { ShareCard } from "@/components/mv/ShareCard";
 import { GlassPanel } from "@/components/mv/Surfaces";
@@ -174,22 +174,12 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
   return (
     <div className="relative">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[440px] overflow-hidden">
-        <Image
+        <SceneImage
           src="/images/band-misty.jpg"
-          alt=""
-          fill
           preload
           loading="eager"
           sizes="(max-width: 900px) 100vw, calc(100vw - 256px)"
-          className="object-cover object-[center_30%] dark:hidden"
-        />
-        <Image
-          src="/images/starry-night.jpg"
-          alt=""
-          fill
-          loading="eager"
-          sizes="(max-width: 900px) 100vw, calc(100vw - 256px)"
-          className="hidden object-cover object-[center_30%] dark:block"
+          className="object-cover object-[center_30%]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_10%,var(--mv-bg)_92%)]" />
       </div>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useQueryClient } from "@tanstack/react-query";
@@ -10,6 +9,7 @@ import { CircleAlert, LogIn } from "lucide-react";
 import { BreathingSun } from "@/components/mv/BreathingSun";
 import { Button, ButtonLink } from "@/components/mv/Button";
 import { MessagePanel } from "@/components/mv/MessagePanel";
+import { SceneImage } from "@/components/mv/SceneImage";
 import { ApiError, apiFetch } from "@/lib/api/client";
 import { queryKeys } from "@/lib/api/hooks";
 import type { ReflectionDto, SubmitDto } from "@/lib/api/types";
@@ -237,7 +237,7 @@ export function FindingScreen({ guest }: { guest: boolean }) {
         phase === "leaving" && "opacity-0",
       )}
     >
-      <Image src="/images/hero-dawn.jpg" alt="" fill preload loading="eager" sizes="calc(100vw - 256px)" className="mv-drift object-cover" />
+      <SceneImage src="/images/hero-dawn.jpg" preload loading="eager" sizes="calc(100vw - 256px)" className="mv-drift object-cover" />
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,14,48,.35),rgba(16,14,48,.18)_40%,rgba(16,14,48,.55))]"

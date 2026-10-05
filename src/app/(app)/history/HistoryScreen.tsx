@@ -13,6 +13,7 @@ import { FilterChip } from "@/components/mv/Chip";
 import { ConfirmDialog } from "@/components/mv/ConfirmDialog";
 import { EmptyState } from "@/components/mv/EmptyState";
 import { FeedbackBox, readFeedback } from "@/components/mv/FeedbackBox";
+import { SceneImage } from "@/components/mv/SceneImage";
 import { Segmented } from "@/components/mv/Segmented";
 import { Card } from "@/components/mv/Surfaces";
 import { Toast } from "@/components/mv/Toast";
@@ -334,10 +335,8 @@ function Detail({ reflection, onDelete }: { reflection: Reflection; onDelete: ()
         aria-label={t("passage.label", { reference: passage.reference, translation })}
         className="relative flex min-h-[360px] max-w-[760px] flex-col justify-end gap-4 overflow-hidden rounded-sheet p-10 text-white max-[600px]:p-7"
       >
-        <Image
+        <SceneImage
           src={PANEL_IMAGE[passage.tradition]}
-          alt=""
-          fill
           loading="eager"
           sizes="(max-width: 1180px) 100vw, 760px"
           className="object-cover"
