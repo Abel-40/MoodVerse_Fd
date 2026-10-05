@@ -2,6 +2,7 @@
   "app": {
     "name": "MoodVerse",
     "home": "MoodVerse home",
+    "skipToContent": "Skip to content",
     "description": "Share what is on your heart and receive one passage from the Holy Bible or the Holy Quran, drawn from verified text and chosen with care."
   },
   "nav": {

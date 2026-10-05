@@ -457,6 +457,29 @@
     opacity: 1;
   }
 
+  /* Out of sight until a keyboard user tabs to it. */
+  .mv-skip {
+    position: fixed;
+    inset-block-start: 12px;
+    inset-inline-start: 12px;
+    z-index: 100;
+    padding: 12px 20px;
+    border-radius: var(--mv-r-pill);
+    background: var(--mv-surface);
+    color: var(--mv-primary);
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: var(--mv-shadow-lg);
+    transform: translateY(calc(-100% - 24px));
+  }
+  .mv-skip:focus {
+    transform: none;
+  }
+  /* The skip link's target takes focus only so the next Tab starts there. */
+  #content:focus {
+    outline: none;
+  }
+
   /* app shell */
   .mv-shell {
     display: grid;

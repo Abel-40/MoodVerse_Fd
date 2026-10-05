@@ -19,7 +19,7 @@ export default async function SourcesPage() {
   );
 
   return (
-    <div className="mv-sky-wash min-h-dvh px-[clamp(20px,5vw,96px)] py-8">
+    <main id="content" tabIndex={-1} className="mv-sky-wash min-h-dvh px-[clamp(20px,5vw,96px)] py-8">
       <div className="mx-auto flex max-w-[860px] flex-col gap-8">
         <Link href="/" aria-label={t("app.home")} className="flex min-h-11 items-center self-start">
           <Wordmark />
@@ -53,6 +53,6 @@ export default async function SourcesPage() {
           </table>
         </Card>
       </div>
-    </div>
+    </main>
   );
 }

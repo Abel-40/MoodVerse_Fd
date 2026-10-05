@@ -10,7 +10,7 @@ export function AuthBackdrop({ children }: { children: ReactNode }) {
   const t = useTranslations("app");
 
   return (
-    <div className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5 py-10">
+    <main id="content" tabIndex={-1} className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5 py-10">
       <Image
         src="/images/calm-sea.jpg"
         alt=""
@@ -30,6 +30,6 @@ export function AuthBackdrop({ children }: { children: ReactNode }) {
         <Wordmark tone="white" labelClassName="text-[26px]!" />
       </Link>
       {children}
-    </div>
+    </main>
   );
 }

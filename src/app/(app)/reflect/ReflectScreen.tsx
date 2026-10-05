@@ -195,7 +195,7 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
       </div>
 
       <div className="relative grid grid-cols-[minmax(0,1fr)_auto] gap-8 px-[clamp(24px,4vw,64px)] pt-[clamp(36px,6vh,72px)] pb-12 max-[1180px]:grid-cols-1">
-        <main className="flex justify-center">
+        <div className="flex justify-center">
           <div className="flex w-full max-w-[740px] flex-col gap-[22px]">
             {!online && (
               <Banner
@@ -324,10 +324,10 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
                 ))}
             </div>
           </div>
-        </main>
+        </div>
 
         {last && (
-          <aside aria-labelledby={ids.rail} className="mv-rail flex w-[300px] flex-col gap-3.5 pt-[58px]">
+          <section aria-labelledby={ids.rail} className="mv-rail flex w-[300px] flex-col gap-3.5 pt-[58px]">
             <h2 id={ids.rail} className="mv-overline text-ink-3">
               {t.rich("reflect.lastTime", {
                 day: () => (
@@ -349,7 +349,7 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
                 width={300}
               />
             </Link>
-          </aside>
+          </section>
         )}
       </div>
     </div>

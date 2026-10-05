@@ -16,7 +16,9 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   return (
     <div className="mv-shell">
       <Sidebar account={account} />
-      <div className="mv-pane">{children}</div>
+      <main id="content" tabIndex={-1} className="mv-pane">
+        {children}
+      </main>
     </div>
   );
 }

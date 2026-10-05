@@ -36,6 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale();
+  const t = await getTranslations("app");
 
   return (
     // The script sets data-theme (and maybe data-motion) before hydration,
@@ -51,6 +52,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: PREFERENCES_SCRIPT }} />
       </head>
       <body>
+        <a href="#content" className="mv-skip">
+          {t("skipToContent")}
+        </a>
         <NextIntlClientProvider>
           <LucideProvider strokeWidth={1.75}>
             <AppProviders>{children}</AppProviders>

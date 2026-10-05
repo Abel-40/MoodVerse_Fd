@@ -93,7 +93,7 @@ export function WelcomeFlow() {
 
   return (
     <div className="grid h-dvh grid-cols-2 bg-bg text-ink max-[960px]:h-auto max-[960px]:min-h-dvh max-[960px]:grid-cols-1 max-[960px]:grid-rows-[280px_minmax(0,1fr)]">
-      <div className="relative flex flex-col justify-between overflow-hidden p-8 text-white">
+      <header className="relative flex flex-col justify-between overflow-hidden p-8 text-white">
         {([1, 2, 3] as const).map((key) => (
           <Image
             key={key}
@@ -123,9 +123,9 @@ export function WelcomeFlow() {
         >
           {t("welcome.caption")}
         </GlassPanel>
-      </div>
+      </header>
 
-      <main className="relative flex flex-col overflow-y-auto px-[clamp(24px,5vw,80px)] py-8">
+      <main id="content" tabIndex={-1} className="relative flex flex-col overflow-y-auto px-[clamp(24px,5vw,80px)] py-8">
         <div className="flex min-h-11 items-center justify-between">
           <div role="img" aria-label={t("welcome.progress", { n: step })} className="flex gap-1.5">
             {([1, 2, 3] as const).map((key) => (

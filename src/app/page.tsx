@@ -23,7 +23,7 @@ export default async function LandingPage() {
   return (
     <div data-theme="light" className="bg-bg text-ink">
       <LandingNav />
-      <main>
+      <main id="content" tabIndex={-1}>
         <Hero browserHref={browserHref} />
         <Highlights />
         <HowItWorks />

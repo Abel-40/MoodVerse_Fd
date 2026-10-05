@@ -107,7 +107,7 @@ export function ResultScreen({ id }: { id: number }) {
 
   return (
     <div className="mv-split h-full max-[1180px]:h-auto">
-      <main className="relative flex min-h-[640px] flex-col overflow-hidden px-[clamp(24px,4vw,64px)] pt-7 pb-12 text-white max-[1180px]:min-h-[70vh]">
+      <div className="relative flex min-h-[640px] flex-col overflow-hidden px-[clamp(24px,4vw,64px)] pt-7 pb-12 text-white max-[1180px]:min-h-[70vh]">
         <Image
           src={reflection.support ? SUPPORT_IMAGE : PANEL_IMAGE[passage.tradition]}
           alt=""
@@ -153,9 +153,9 @@ export function ResultScreen({ id }: { id: number }) {
         >
           <PassageView passage={passage} tone="onImage" unlabelled />
         </div>
-      </main>
+      </div>
 
-      <aside
+      <section
         aria-label={t("result.about")}
         className="flex flex-col gap-6 overflow-y-auto bg-bg px-8 py-9 max-[1180px]:overflow-visible max-[600px]:px-5"
       >
@@ -221,7 +221,7 @@ export function ResultScreen({ id }: { id: number }) {
             <p dir="auto" className="pb-3.5 font-serif text-[19px] leading-7 text-ink-2 italic">“{reflection.text}”</p>
           </details>
         )}
-      </aside>
+      </section>
     </div>
   );
 }

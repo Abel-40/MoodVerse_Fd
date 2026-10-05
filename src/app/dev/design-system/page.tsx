@@ -13,7 +13,7 @@ export default function DesignSystemPage() {
   if (process.env.NODE_ENV === "production") notFound();
 
   return (
-    <main>
+    <main id="content" tabIndex={-1}>
       {(["light", "dark"] as const).map((theme) => (
         <div key={theme} data-theme={theme} className="relative overflow-hidden bg-bg text-ink">
           <div
