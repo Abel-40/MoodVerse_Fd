@@ -6,7 +6,7 @@ import type { ShareBackground } from "@/components/mv/ShareCard";
 import { listSaved, toggleSaved, updateSavedBackground, type SavedItem } from "@/lib/client/saved-store";
 import type { Passage, Tradition } from "@/lib/scripture";
 
-import { apiFetch } from "./client";
+import { ApiError, apiFetch } from "./client";
 import { toReflection } from "./mapping";
 import type { FeedbackReason, HistoryDto, ReflectionDto, SubmitDto, UserDto } from "./types";
 
@@ -43,10 +43,11 @@ export function useReflection(id: number | null) {
   });
 }
 
-/** Private history, newest first, loaded a page at a time. */
-export function useHistory() {
+/** Private history, newest first, loaded a page at a time. Off for guests. */
+export function useHistory(enabled = true) {
   return useInfiniteQuery({
     queryKey: queryKeys.history,
+    enabled,
     queryFn: ({ pageParam }) =>
       apiFetch<HistoryDto>(`api/v1/reflections/history?limit=${HISTORY_PAGE}&offset=${pageParam}`),
     initialPageParam: 0,
@@ -107,5 +108,31 @@ export function useUpdateSavedBackground() {
     mutationFn: ({ passageId, background }: { passageId: string; background: ShareBackground }) =>
       updateSavedBackground(passageId, background),
     onSuccess: (items: SavedItem[]) => client.setQueryData(queryKeys.saved, items),
+  });
+}
+
+/**
+ * Delete a reflection for good. Resolves "unsupported" when the backend has no
+ * delete endpoint yet, so the screen can say so instead of pretending.
+ */
+export function useDeleteReflection() {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: number): Promise<"deleted" | "unsupported"> => {
+      try {
+        await apiFetch(`api/v1/reflections/${id}`, { method: "DELETE" });
+        return "deleted";
+      } catch (error) {
+        // 404: already gone. 405: this backend can't delete yet.
+        if (error instanceof ApiError && error.status === 404) return "deleted";
+        if (error instanceof ApiError && error.status === 405) return "unsupported";
+        throw error;
+      }
+    },
+    onSuccess: (outcome, id) => {
+      if (outcome !== "deleted") return;
+      client.removeQueries({ queryKey: queryKeys.reflection(id) });
+      client.invalidateQueries({ queryKey: queryKeys.history });
+    },
   });
 }

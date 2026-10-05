@@ -138,6 +138,11 @@ export const handlers = [
 
   http.post("/api/mv/api/v1/reflections/:id/feedback", () => HttpResponse.json({ ok: true }, { status: 201 })),
 
+  // Like the current backend, which has no delete route yet.
+  http.delete("/api/mv/api/v1/reflections/:id", () =>
+    HttpResponse.json({ detail: "Method Not Allowed" }, { status: 405 }),
+  ),
+
   http.get("/api/mv/auth/me", () => HttpResponse.json(user)),
 
   http.patch("/api/mv/auth/me/preferences", async ({ request }) => {

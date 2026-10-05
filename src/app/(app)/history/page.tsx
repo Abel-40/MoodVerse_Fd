@@ -1,11 +1,15 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-// Placeholder until prompt 09 builds the History screen.
-export default async function HistoryPage() {
+import { getSessionKind } from "@/lib/server/session";
+
+import { HistoryScreen } from "./HistoryScreen";
+
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("history");
-  return (
-    <main className="px-[clamp(24px,4vw,56px)] py-9">
-      <h1 className="font-serif text-[46px] leading-none font-medium tracking-[-0.02em]">{t("title")}</h1>
-    </main>
-  );
+  return { title: t("title") };
+}
+
+export default async function HistoryPage() {
+  return <HistoryScreen selectedId={null} guest={(await getSessionKind()) === "guest"} />;
 }

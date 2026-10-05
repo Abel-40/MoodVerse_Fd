@@ -171,10 +171,51 @@
   },
   "history": {
     "title": "History",
-    "private": "Private to you"
+    "private": "Private to you",
+    "count": "{n, plural, one {# reflection} other {# reflections}}",
+    "searchLabel": "Search reflections",
+    "search": "Search your words or a passage",
+    "traditionLabel": "Tradition",
+    "all": "All",
+    "emotionLabel": "Filter by emotion",
+    "listLabel": "Past reflections",
+    "noMatch": "No reflections match these filters.",
+    "clear": "Clear filters",
+    "loading": "Loading more reflections…",
+    "today": "Today, {time}",
+    "yesterday": "Yesterday, {time}",
+    "empty": {
+      "title": "Nothing here yet",
+      "body": "When you reflect, your words and passages gather here, kept privately, just for you.",
+      "cta": "Write your first reflection"
+    },
+    "detailLabel": "Selected reflection",
+    "back": "All reflections",
+    "onlyYou": "Only you can see this",
+    "delete": "Delete",
+    "deleteRow": "Delete this reflection",
+    "deleteTitle": "Delete this reflection?",
+    "deleteBody": "This can’t be undone.",
+    "cancel": "Cancel",
+    "deleted": "Reflection deleted",
+    "deleteUnavailable": "Deleting isn’t available yet, so your reflection is still saved.",
+    "yourFeedback": "Your feedback",
+    "noFeedback": "No feedback yet",
+    "makeCard": "Make a share card"
   },
   "saved": {
-    "title": "Saved"
+    "title": "Saved",
+    "summary": "{n, plural, one {# passage} other {# passages}} · open one to share it again",
+    "listLabel": "Saved passages",
+    "open": "{reference}, open in share editor",
+    "share": "Share",
+    "remove": "Remove from saved",
+    "meta": "{translation} · saved {day}",
+    "tile": "Passages you save from a result appear here.",
+    "newReflection": "New reflection",
+    "removed": "Removed from saved",
+    "today": "today",
+    "yesterday": "yesterday"
   },
   "settings": {
     "title": "Settings",
@@ -191,7 +232,59 @@
     "textSize": {
       "label": "Text size",
       "body": "Also follows your browser zoom."
-    }
+    },
+    "navLabel": "Settings sections",
+    "sections": {
+      "reading": "Reading",
+      "appearance": "Appearance",
+      "privacy": "Privacy & data",
+      "account": "Account",
+      "about": "About"
+    },
+    "profile": {
+      "email": "Signed in with email · synced across devices",
+      "google": "Signed in with Google · synced across devices",
+      "guest": "Guest · saved in this browser",
+      "signOut": "Sign out",
+      "signIn": "Sign in"
+    },
+    "reading": {
+      "defaultTradition": "Default tradition",
+      "defaultTraditionNote": "You can still switch for any reflection.",
+      "bibleTranslation": "Bible translation",
+      "quranTranslation": "Quran translation"
+    },
+    "textSizes": [
+      "Smaller",
+      "Default",
+      "Large",
+      "Larger",
+      "Largest"
+    ],
+    "privacy": {
+      "note": "Your reflections are private by default. They’re never shared and never placed on share cards.",
+      "export": "Export my data",
+      "exportBody": "Download your reflections, passages and feedback.",
+      "exportButton": "Export",
+      "exported": "Your data was downloaded",
+      "delete": "Delete my data",
+      "deleteBody": "Permanently removes your reflections and saved passages.",
+      "deleteButton": "Delete…",
+      "deleteTitle": "Delete your data?",
+      "deleteConfirmBody": "This removes your reflections, saved passages and preferences, and can’t be undone. Type {word} to confirm.",
+      "deleteWord": "delete",
+      "deleteInput": "Type {word} to confirm",
+      "deleteConfirm": "Delete my data",
+      "deleted": "Your data in this browser has been deleted.",
+      "deletedLocalOnly": "Your data in this browser has been deleted. Deleting what’s stored with your account isn’t available yet."
+    },
+    "about": {
+      "sources": "About our scripture sources",
+      "privacy": "Privacy policy",
+      "terms": "Terms of use",
+      "version": "MoodVerse for web 1.0"
+    },
+    "saved": "Saved"
   },
   "share": {
     "cardLabel": "Share card: {reference}, {translation}",
@@ -471,5 +564,15 @@
     "body": "It sounds like things feel very heavy right now. If you’re thinking about harming yourself, please reach out to someone you trust or a local support line today.",
     "cta": "Find support near you",
     "notNow": "Not now"
+  },
+  "sources": {
+    "title": "Our scripture sources",
+    "intro": "Every passage in MoodVerse is stored exactly as published and always shown with its reference and translation. We never write, edit or paraphrase scripture.",
+    "tradition": "Tradition",
+    "translation": "Translation",
+    "licence": "Licence",
+    "publicDomain": "Public domain",
+    "pending": "Licence details pending review",
+    "back": "Back to settings"
   }
 }

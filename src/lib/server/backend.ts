@@ -29,6 +29,8 @@ export interface BackendUser {
   display_name: string | null;
   email_verified: boolean;
   preferred_religion: "bible" | "quran" | null;
+  /** OIDC providers linked to the account, e.g. ["google"]. */
+  linked_providers?: string[];
 }
 
 interface FetchOptions {

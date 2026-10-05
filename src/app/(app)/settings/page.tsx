@@ -1,11 +1,25 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-// Placeholder until prompt 09 builds the Settings screen.
-export default async function SettingsPage() {
+import { getAccount } from "@/lib/server/account";
+
+import { SettingsScreen, type SettingsAccount } from "./SettingsScreen";
+
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("settings");
-  return (
-    <main className="px-[clamp(24px,4vw,56px)] py-9">
-      <h1 className="font-serif text-[46px] leading-none font-medium tracking-[-0.02em]">{t("title")}</h1>
-    </main>
-  );
+  return { title: t("title") };
+}
+
+export default async function SettingsPage() {
+  const state = await getAccount();
+  const account: SettingsAccount =
+    state.kind === "user"
+      ? {
+          kind: "user",
+          email: state.user?.email ?? null,
+          google: state.user?.linked_providers?.includes("google") ?? false,
+          defaultTradition: state.user?.preferred_religion ?? null,
+        }
+      : { kind: "guest" };
+  return <SettingsScreen account={account} />;
 }

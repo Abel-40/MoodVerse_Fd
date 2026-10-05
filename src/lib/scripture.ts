@@ -18,3 +18,19 @@ export interface Passage {
   /** The original Arabic; Quran passages only. */
   arabic: string | null;
 }
+
+export interface Translation {
+  id: string;
+  name: string;
+  licence: "publicDomain" | "pending";
+}
+
+/**
+ * The editions the scripture store serves today (the backend's
+ * TRANSLATION_NAMES). There's no sources endpoint yet, so update this when
+ * the store changes.
+ */
+export const TRANSLATIONS: Record<Tradition, Translation[]> = {
+  bible: [{ id: "akjv", name: "American King James Version", licence: "publicDomain" }],
+  quran: [{ id: "saheeh", name: "Saheeh International", licence: "pending" }],
+};
