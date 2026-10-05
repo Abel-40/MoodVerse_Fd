@@ -1,0 +1,613 @@
+/* MoodVerse components and app shell: a port of design-kit/assets/css/
+   moodverse.css and moodverse-web.css.
+
+   The kit scopes bare class names under `.mv` (`.mv .btn`). Here they are
+   global with an `mv-` prefix instead (`.mv-btn`), because Tailwind v4 has
+   utilities of its own with some of those names (`overline`). The kit's local
+   variables (--ink2, --serif, ...) are replaced by the --mv-* tokens.
+
+   Everything sits in the components layer, so a Tailwind utility passed in a
+   className always wins over a component default. */
+
+@layer base {
+  body {
+    font-family: var(--mv-sans);
+    color: var(--mv-ink);
+    background: var(--mv-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--mv-primary);
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  textarea::placeholder,
+  input::placeholder {
+    color: var(--mv-ink-3);
+  }
+
+  input[type="range"] {
+    accent-color: var(--mv-primary);
+  }
+
+  /* Anchor links glide unless motion is reduced. data-scroll-behavior on
+     <html> makes Next.js jump instead during route changes. */
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-motion="reduced"]) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* The selected segment is lifted off the track: surface in light, a lighter
+     navy in dark, where surface would vanish into surface-2. */
+  :root,
+  [data-theme="light"] {
+    --mv-seg-on: var(--mv-surface);
+  }
+  [data-theme="dark"] {
+    --mv-seg-on: #26305A;
+  }
+}
+
+@layer components {
+  /* type helpers */
+  .mv-grad-text {
+    background: var(--mv-grad-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .mv-overline {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mv-primary);
+  }
+  .mv-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: var(--mv-r-pill);
+    background: var(--mv-accent-soft);
+    color: var(--mv-primary);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* buttons */
+  .mv-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 52px;
+    padding: 0 24px;
+    border-radius: var(--mv-r-pill);
+    border: 0;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition:
+      transform var(--mv-dur-fast) var(--mv-ease),
+      box-shadow var(--mv-dur-fast) var(--mv-ease),
+      background-color var(--mv-dur-fast);
+  }
+  .mv-btn-primary {
+    background: var(--mv-grad);
+    color: var(--mv-on-grad);
+    box-shadow: var(--mv-shadow-btn);
+  }
+  .mv-btn-primary:hover {
+    transform: translateY(-1px);
+  }
+  .mv-btn-secondary {
+    background: var(--mv-surface);
+    color: var(--mv-ink);
+    box-shadow: inset 0 0 0 1.5px var(--mv-line-strong);
+  }
+  .mv-btn-ghost {
+    background: transparent;
+    color: var(--mv-ink-2);
+    height: 44px;
+    padding: 0 14px;
+  }
+  /* Only ever used on imagery, so the colours are fixed rather than themed. */
+  .mv-btn-glass {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+  .mv-btn-danger {
+    background: transparent;
+    color: var(--mv-danger);
+    box-shadow: inset 0 0 0 1.5px var(--mv-danger);
+  }
+  .mv-btn:disabled,
+  .mv-btn[aria-disabled="true"] {
+    background: var(--mv-surface-2);
+    color: var(--mv-ink-3);
+    box-shadow: none;
+    transform: none;
+    cursor: default;
+  }
+  a.mv-btn[aria-disabled="true"] {
+    pointer-events: none;
+  }
+  .mv-btn-sm {
+    height: 44px;
+    padding: 0 18px;
+    font-size: 15px;
+  }
+  .mv-btn-icon {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: var(--mv-r-pill);
+  }
+
+  /* chips */
+  .mv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 32px;
+    padding: 0 13px;
+    border-radius: var(--mv-r-pill);
+    background: var(--mv-surface-2);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--mv-ink);
+  }
+  .mv-chip-need {
+    background: var(--mv-accent-soft);
+    color: var(--mv-primary);
+  }
+  .mv-chip-need::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 9px;
+    background: var(--mv-grad);
+  }
+  .mv-chip-filter {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: var(--mv-r-pill);
+    border: 0;
+    background: var(--mv-surface);
+    box-shadow: inset 0 0 0 1.5px var(--mv-line);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--mv-ink-2);
+    transition:
+      background-color var(--mv-dur-fast),
+      color var(--mv-dur-fast);
+  }
+  /* 40 px to the eye, 44 px to the finger. */
+  .mv-chip-filter::after {
+    content: "";
+    position: absolute;
+    inset: -2px 0;
+  }
+  .mv-chip-filter[aria-pressed="true"] {
+    background: var(--mv-ink);
+    color: var(--mv-bg);
+    box-shadow: none;
+  }
+
+  /* segmented */
+  .mv-seg {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    padding: 4px;
+    border-radius: var(--mv-r-pill);
+    background: var(--mv-surface-2);
+  }
+  .mv-seg > button {
+    height: 44px;
+    border-radius: var(--mv-r-pill);
+    border: 0;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--mv-ink-2);
+    transition:
+      background-color var(--mv-dur) var(--mv-ease),
+      color var(--mv-dur);
+  }
+  .mv-seg > button[aria-checked="true"] {
+    background: var(--mv-seg-on);
+    color: var(--mv-ink);
+    box-shadow: var(--mv-shadow);
+  }
+  .mv-seg-sm > button {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  /* field */
+  .mv-field {
+    border-radius: var(--mv-r-card);
+    background: var(--mv-surface);
+    box-shadow:
+      var(--mv-shadow),
+      inset 0 0 0 1.5px var(--mv-line);
+    transition: box-shadow var(--mv-dur);
+  }
+  .mv-field:focus-within,
+  .mv-field.is-focus {
+    box-shadow:
+      var(--mv-shadow),
+      inset 0 0 0 2px var(--mv-primary),
+      0 0 0 6px var(--mv-accent-soft);
+  }
+  /* The field draws the focus ring, so the textarea itself does not. */
+  .mv-field > textarea {
+    width: 100%;
+    min-height: 220px;
+    padding: 24px 26px 8px;
+    resize: none;
+    border: 0;
+    background: transparent;
+    font-size: 19px;
+    line-height: 29px;
+  }
+  .mv-field > textarea:focus {
+    outline: none;
+  }
+  .mv-field-compact > textarea {
+    min-height: 0;
+    padding: 20px;
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  /* surfaces */
+  .mv-card {
+    background: var(--mv-surface);
+    border-radius: var(--mv-r-card);
+    box-shadow: var(--mv-shadow);
+  }
+  .mv-card-line {
+    box-shadow:
+      var(--mv-shadow),
+      inset 0 0 0 1px var(--mv-line);
+  }
+  .mv-glass {
+    background: var(--mv-glass);
+    -webkit-backdrop-filter: var(--mv-glass-blur);
+    backdrop-filter: var(--mv-glass-blur);
+    box-shadow:
+      inset 0 0 0 1px var(--mv-glass-line),
+      var(--mv-shadow);
+  }
+  /* Navy glass for use on imagery, with white text in either theme. */
+  .mv-glass-dark {
+    background: rgba(12, 16, 40, 0.32);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+    color: #fff;
+  }
+  .mv-sky-wash {
+    background: var(--mv-sky-wash);
+  }
+  .mv-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mv-scrim {
+    background: var(--mv-scrim);
+  }
+  .mv-icon-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--mv-accent-soft);
+    color: var(--mv-primary);
+  }
+
+  /* list rows */
+  .mv-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 56px;
+    padding: 0 18px;
+  }
+  .mv-row + .mv-row {
+    border-top: 1px solid var(--mv-line);
+  }
+
+  /* toggle (the kit draws it inline on the Settings screen) */
+  .mv-toggle {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    width: 52px;
+    height: 32px;
+    padding: 3px;
+    border: 0;
+    border-radius: var(--mv-r-pill);
+    background: var(--mv-surface-2);
+    box-shadow: inset 0 0 0 1.5px var(--mv-line-strong);
+    transition: background-color var(--mv-dur-fast);
+  }
+  .mv-toggle::after {
+    content: "";
+    position: absolute;
+    inset: -6px 0;
+  }
+  .mv-toggle > span {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--mv-r-pill);
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform var(--mv-dur-fast) var(--mv-ease);
+  }
+  .mv-toggle[aria-checked="true"] {
+    background: var(--mv-grad);
+    box-shadow: none;
+  }
+  .mv-toggle[aria-checked="true"] > span {
+    transform: translateX(20px);
+  }
+  .mv-toggle:dir(rtl)[aria-checked="true"] > span {
+    transform: translateX(-20px);
+  }
+
+  /* slider, with a small and a large "A" at either end */
+  .mv-slider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mv-slider > span {
+    font-family: var(--mv-serif);
+    font-weight: 600;
+    line-height: 1;
+  }
+  .mv-slider > input {
+    flex-grow: 1;
+    height: 44px;
+  }
+
+  /* banner (the offline notice on Reflect) */
+  .mv-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 12px 12px 14px;
+    border-radius: 22px;
+  }
+
+  /* motion */
+  .mv-fade-in {
+    animation: mv-fade-up var(--mv-dur-slow) var(--mv-ease) both;
+  }
+  .mv-drift {
+    animation: mv-drift 30s ease-in-out infinite alternate;
+  }
+  .mv-breathe {
+    animation: mv-breathe 4s ease-in-out infinite;
+  }
+  .mv-float {
+    animation: mv-float 8s ease-in-out infinite;
+  }
+
+  /* voice: the blinking caret after the live transcript, and the level meter */
+  .mv-caret {
+    display: inline-block;
+    width: 2px;
+    height: 22px;
+    margin-left: 2px;
+    vertical-align: -4px;
+    background: var(--mv-primary);
+    animation: mv-caret 1s steps(1) infinite;
+  }
+  .mv-level-bar {
+    width: 3px;
+    border-radius: 3px;
+    background: var(--mv-grad);
+    animation: mv-level 2.2s ease-in-out infinite;
+  }
+
+  /* Fades a section up the first time it scrolls into view (RevealObserver
+     adds .is-in). Hidden only when scripts run, and never with reduced
+     motion, so content can't get stuck invisible. */
+  [data-js] .mv-reveal:not(.is-in) {
+    opacity: 0;
+  }
+  .mv-reveal.is-in {
+    animation: mv-fade-up var(--mv-dur-slow) var(--mv-ease) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-js] .mv-reveal:not(.is-in) {
+      opacity: 1;
+    }
+  }
+  [data-motion="reduced"] .mv-reveal:not(.is-in) {
+    opacity: 1;
+  }
+
+  /* app shell */
+  .mv-shell {
+    display: grid;
+    grid-template-columns: var(--mv-sidebar) minmax(0, 1fr);
+    height: 100vh;
+    height: 100dvh;
+    background: var(--mv-bg);
+  }
+  .mv-side {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 100vh;
+    height: 100dvh;
+    padding: 24px 16px 20px;
+    background: var(--mv-surface);
+    box-shadow: 1px 0 0 var(--mv-line);
+  }
+  .mv-side nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mv-navlink {
+    height: 46px;
+    padding: 0 14px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--mv-ink-2);
+    transition: background-color var(--mv-dur-fast);
+  }
+  .mv-navlink:hover {
+    background: var(--mv-surface-2);
+  }
+  .mv-navlink[aria-current="page"] {
+    background: var(--mv-accent-soft);
+    color: var(--mv-primary);
+    font-weight: 800;
+  }
+  .mv-sidefoot {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 18px;
+    background: var(--mv-sky);
+  }
+  .mv-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--mv-r-pill);
+    background: var(--mv-grad);
+    color: var(--mv-on-grad);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .mv-pane {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    min-width: 0;
+  }
+  .mv-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+  }
+  .mv-split-list {
+    display: grid;
+    grid-template-columns: minmax(360px, 460px) minmax(0, 1fr);
+  }
+  .mv-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  @media (max-width: 1180px) {
+    .mv-split,
+    .mv-split-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .mv-rail,
+    .mv-detail {
+      display: none !important;
+    }
+  }
+
+  /* Below 900 px the sidebar becomes a top bar with icon-only links. */
+  @media (max-width: 900px) {
+    .mv-shell {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto minmax(0, 1fr);
+    }
+    .mv-side {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: auto;
+      padding: 10px 14px;
+      gap: 8px;
+      box-shadow: 0 1px 0 var(--mv-line);
+    }
+    .mv-side nav {
+      flex-direction: row;
+    }
+    /* Hidden from sight but still read out, so icon-only links keep a name. */
+    .mv-navlabel {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .mv-sidefoot,
+    .mv-hide-sm {
+      display: none !important;
+    }
+    .mv-pane {
+      height: auto;
+    }
+  }
+}
+
+@keyframes mv-level {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes mv-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
