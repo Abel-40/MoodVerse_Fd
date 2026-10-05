@@ -6,6 +6,28 @@ import type { Passage } from "@/lib/scripture";
 
 import { Wordmark } from "./Wordmark";
 
+export const SHARE_BACKGROUNDS = [
+  "photo",
+  "transparent",
+  "dawn",
+  "misty",
+  "sea",
+  "hills",
+  "night",
+  "clouds",
+  "sky",
+  "daybreak",
+  "midnight",
+  "clean",
+] as const;
+
+/** Where a user's photo sits in the card: object-position in % and a zoom of 1 or more. */
+export interface PhotoFrame {
+  x: number;
+  y: number;
+  zoom: number;
+}
+
 export type ShareBackground =
   | "photo"
   | "transparent"
@@ -99,8 +121,18 @@ const LOOKS: Record<ShareBackground, Look> = {
   },
 };
 
+/** The landscape behind a background, if it has one (for swatches). */
+export function shareBackgroundImage(background: ShareBackground): string | undefined {
+  return background === "photo" ? undefined : LOOKS[background].image;
+}
+
 const PHOTO_DARK_TEXT_OVERLAY = LOOKS.clouds.overlay;
-const CHECKERBOARD = "repeating-conic-gradient(#3A3F5C 0% 25%, #4A5070 0% 50%) 0 0 / 24px 24px";
+// Shown behind a transparent card in the editor only: dark squares under
+// light text, light squares under dark text. Never part of the export.
+const CHECKERBOARD: Record<Tone, string> = {
+  light: "repeating-conic-gradient(#3A3F5C 0% 25%, #4A5070 0% 50%) 0 0 / 24px 24px",
+  dark: "repeating-conic-gradient(#C9CEDC 0% 25%, #FFFFFF 0% 50%) 0 0 / 24px 24px",
+};
 const TEXT = { light: "#FFFFFF", dark: "#131A33" } as const;
 const PHOTO_BACKGROUNDS: ReadonlySet<ShareBackground> = new Set(["dawn", "misty", "sea", "hills", "night", "photo"]);
 
@@ -113,12 +145,15 @@ interface ShareCardProps {
   tone?: Tone;
   /** Object URL of the user's photo. It stays on the device. */
   photoUrl?: string;
+  photoFrame?: PhotoFrame;
   /** Passage size, 0.8 to 1.2. */
   textScale?: number;
   /** "Show reference & translation". */
   showAttribution?: boolean;
   /** Draw the editor's checkerboard behind a transparent card. */
   checkerboard?: boolean;
+  /** Render for export: full-size images, loaded straight away. */
+  forExport?: boolean;
   className?: string;
 }
 
@@ -132,9 +167,11 @@ export function ShareCard({
   width = 360,
   tone,
   photoUrl,
+  photoFrame,
   textScale = 1,
   showAttribution = true,
   checkerboard = false,
+  forExport = false,
   className,
 }: ShareCardProps) {
   const t = useTranslations();
@@ -160,7 +197,7 @@ export function ShareCard({
         className="absolute top-0 left-0 h-[640px] w-[360px] origin-top-left overflow-hidden"
         style={{
           transform: scale === 1 ? undefined : `scale(${scale})`,
-          background: background === "transparent" && checkerboard ? CHECKERBOARD : look.base,
+          background: background === "transparent" && checkerboard ? CHECKERBOARD[textTone] : look.base,
           color: TEXT[textTone],
         }}
       >
@@ -169,8 +206,19 @@ export function ShareCard({
             src={image}
             alt=""
             fill
-            sizes={`${Math.ceil(width)}px`}
+            loading={forExport ? "eager" : undefined}
+            sizes={forExport ? "1080px" : `${Math.ceil(width)}px`}
             className="object-cover"
+            style={
+              background === "photo" && photoFrame
+                ? {
+                    objectPosition: `${photoFrame.x}% ${photoFrame.y}%`,
+                    transform: `scale(${photoFrame.zoom})`,
+                    transformOrigin: `${photoFrame.x}% ${photoFrame.y}%`,
+                  }
+                : undefined
+            }
+            // A photo's object URL is local to this browser; never send it to the image optimiser.
             unoptimized={image.startsWith("blob:")}
           />
         )}

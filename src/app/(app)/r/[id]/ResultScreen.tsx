@@ -15,6 +15,7 @@ import { GlassPanel } from "@/components/mv/Surfaces";
 import { WhyCard } from "@/components/mv/WhyCard";
 import { ApiError } from "@/lib/api/client";
 import { useFeedback, useReflection, useSaved, useToggleSave } from "@/lib/api/hooks";
+import { readLastBackground } from "@/lib/client/share-export";
 import { cx } from "@/lib/cx";
 
 // Each tradition has its own landscape; the support result gets the dawn lake.
@@ -183,7 +184,7 @@ export function ResultScreen({ id }: { id: number }) {
             onClick={() =>
               toggleSave.mutate({
                 passage,
-                background: quran ? "misty" : "dawn",
+                background: readLastBackground() ?? (quran ? "misty" : "dawn"),
                 reflectionId: reflection.id,
               })
             }

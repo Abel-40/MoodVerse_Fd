@@ -198,7 +198,7 @@
     "cardLabelTransparent": "Share card: {reference}, {translation}, transparent background",
     "bg": {
       "photo": "Your photo",
-      "transparent": "Transparent",
+      "transparent": "Transparent PNG",
       "dawn": "Dawn lake",
       "misty": "Misty morning",
       "sea": "Calm sea",
@@ -209,6 +209,34 @@
       "daybreak": "Daybreak gradient",
       "midnight": "Midnight",
       "clean": "Clean white"
+    },
+    "title": "Share card",
+    "back": "Back to passage",
+    "preview": "Live preview, 9:16",
+    "previewPhoto": "Live preview, 9:16. Drag or use the arrow keys to move your photo; scroll, pinch or use + and − to zoom.",
+    "size": "1080 × 1920 · sized for stories",
+    "options": "Card options",
+    "background": "Background",
+    "photoTile": "Photo",
+    "dropHint": "Choose a photo, or drop an image here. It stays in your browser.",
+    "textColor": "Text color",
+    "light": "Light",
+    "dark": "Dark",
+    "textSize": "Text size",
+    "textSizeValue": "{percent}%",
+    "attribution": "Show reference & translation",
+    "download": "Download image",
+    "downloadTransparent": "Download transparent PNG",
+    "copy": "Copy image",
+    "share": "Share…",
+    "copied": "Image copied",
+    "downloaded": "Image downloaded",
+    "failed": "Couldn’t make the image. Please try again.",
+    "copyFailed": "This browser can’t copy images. Try Download instead.",
+    "note": {
+      "default": "Your reflection is never added to the card.",
+      "transparent": "No background, so you can place it on any photo or story.",
+      "photo": "Your photo stays in your browser. Your reflection is never added."
     }
   },
   "landing": {
