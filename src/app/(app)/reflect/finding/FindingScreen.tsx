@@ -78,6 +78,48 @@ async function findPassage(pending: PendingReflection, signal: AbortSignal): Pro
   throw new Error("timed out");
 }
 
+/*
+ * One search per staged reflection and attempt. React mounts effects twice in
+ * development, and a remount must join the search already running rather than
+ * submit the reflection again. A search is only aborted once nobody has
+ * rejoined it, or when the person presses Cancel.
+ */
+interface Flight {
+  promise: Promise<ReflectionDto>;
+  controller: AbortController;
+  watchers: number;
+  abortTimer?: number;
+}
+const flights = new Map<string, Flight>();
+
+function joinFlight(key: string, pending: PendingReflection): Flight {
+  let flight = flights.get(key);
+  if (!flight) {
+    const controller = new AbortController();
+    const created: Flight = { promise: findPassage(pending, controller.signal), controller, watchers: 0 };
+    created.promise.then(
+      () => flights.delete(key),
+      () => flights.delete(key),
+    );
+    flights.set(key, created);
+    flight = created;
+  }
+  window.clearTimeout(flight.abortTimer);
+  flight.watchers += 1;
+  return flight;
+}
+
+function leaveFlight(key: string) {
+  const flight = flights.get(key);
+  if (!flight) return;
+  flight.watchers -= 1;
+  if (flight.watchers > 0) return;
+  flight.abortTimer = window.setTimeout(() => {
+    flight.controller.abort();
+    flights.delete(key);
+  }, 0);
+}
+
 export function FindingScreen({ guest }: { guest: boolean }) {
   const t = useTranslations();
   const router = useRouter();
@@ -88,7 +130,7 @@ export function FindingScreen({ guest }: { guest: boolean }) {
   const pending = useMemo<PendingReflection | null>(() => (raw ? parsePendingReflection(raw) : null), [raw]);
   const [phase, setPhase] = useState<Phase>(guest ? "signIn" : "finding");
   const [attempt, setAttempt] = useState(0);
-  const controller = useRef<AbortController | null>(null);
+  const flight = useRef<Flight | null>(null);
 
   useEffect(() => {
     if (raw === null) return;
@@ -98,31 +140,37 @@ export function FindingScreen({ guest }: { guest: boolean }) {
     }
     if (guest) return;
 
-    const abort = new AbortController();
-    controller.current = abort;
+    const key = `${raw}#${attempt}`;
+    const current = joinFlight(key, pending);
+    flight.current = current;
+    // Ends this screen's own waits (not the search) when it unmounts.
+    const local = new AbortController();
     const startedAt = Date.now();
 
-    findPassage(pending, abort.signal)
+    current.promise
       .then(async (reflection) => {
         // Don't flash: stay at least MIN_VISIBLE_MS, then fade into the result.
-        await wait(Math.max(0, MIN_VISIBLE_MS - (Date.now() - startedAt)), abort.signal);
+        await wait(Math.max(0, MIN_VISIBLE_MS - (Date.now() - startedAt)), local.signal);
         queryClient.setQueryData(queryKeys.reflection(reflection.id), reflection);
         await clearDraft();
         setPhase("leaving");
-        await wait(FADE_MS, abort.signal);
+        await wait(FADE_MS, local.signal);
         discardPendingReflection();
         router.replace(`/r/${reflection.id}`);
       })
       .catch((error: unknown) => {
-        if (abort.signal.aborted) return;
+        if (local.signal.aborted || current.controller.signal.aborted) return;
         setPhase(error instanceof ApiError && error.signedOut ? "signIn" : "failed");
       });
 
-    return () => abort.abort();
+    return () => {
+      local.abort();
+      leaveFlight(key);
+    };
   }, [attempt, guest, pending, queryClient, raw, router]);
 
   function cancel() {
-    controller.current?.abort();
+    flight.current?.controller.abort();
     discardPendingReflection();
     router.push("/reflect");
   }
