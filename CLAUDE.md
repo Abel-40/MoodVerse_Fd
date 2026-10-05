@@ -12,9 +12,18 @@
   (the kit was written for Next 15 and ships a Tailwind v3 preset). The preset
   is ported to an `@theme inline` block in `src/app/globals.css`.
 - **Backend already exists.** The FastAPI backend is in `../MoodVerse_bd`
-  (custom JWT + Google OIDC auth, async reflection submit-and-poll). Prompt 06
-  becomes "match the kit's API contract against that backend" rather than
-  building a new one. `src/lib/api.ts` is the existing HTTP layer for it.
+  (custom JWT, magic-link email, Google OIDC, async reflection submit-and-poll).
+  Prompt 06 becomes "match the kit's API contract against that backend" rather
+  than building a new one.
+- **Auth and backend calls.** The browser never holds backend tokens: the
+  `/api/auth/*` route handlers keep them in httpOnly cookies (`mv-at`, `mv-rt`)
+  and `src/proxy.ts` refreshes them before a page renders. Server code calls
+  the backend with `backendFetch` (`src/lib/server/backend.ts`); client
+  components go through the same-origin proxy `/api/mv/<path>`, which only
+  forwards `auth/me` and `api/v1/*`. Guests get a `guest=1` cookie and keep
+  their data in this browser (IndexedDB via `idb-keyval`, plus localStorage).
+- **Scripture never goes in `messages/*.json`.** Translators could change it;
+  passage text always comes from passage data (`src/lib/fixtures.ts` in mocks).
 - **Component classes are prefixed `mv-`.** The kit's CSS uses bare names
   (`.btn`, `.chip`, `.overline`, ...) scoped under `.mv`. Here they are global
   and prefixed (`.mv-btn`, `.mv-chip`, `.mv-overline`, ...) in
@@ -27,9 +36,10 @@
   lives in the `mv-theme` cookie. Any subtree can force a theme with
   `data-theme="light|dark"`. Use `usePreferences()` from
   `src/lib/use-preferences.ts` to change theme or motion.
-- **Legacy UI.** `src/components/ProductApp.tsx` (still served at `/`) and the
-  API console components predate the kit. They are replaced screen by screen
-  as the prompts land; do not extend them.
+- **Legacy code.** The API console (`Console`, `EndpointCard`, `LogPanel`,
+  `ResponseView`, `TopBar`, `ReflectionPoll`, `VoiceRecorder`, and
+  `src/lib/{api,endpoints,request,session}`) predates the kit and is no
+  longer routed. Don't extend it.
 
 ---
 
