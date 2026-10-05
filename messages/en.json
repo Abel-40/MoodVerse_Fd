@@ -1,0 +1,384 @@
+{
+  "app": {
+    "name": "MoodVerse",
+    "home": "MoodVerse home",
+    "description": "Share what is on your heart and receive one passage from the Holy Bible or the Holy Quran, drawn from verified text and chosen with care."
+  },
+  "nav": {
+    "label": "Main",
+    "reflect": "Reflect",
+    "history": "History",
+    "saved": "Saved",
+    "settings": "Settings"
+  },
+  "account": {
+    "synced": "Private · synced",
+    "guest": "Guest",
+    "guestNote": "Saved in this browser",
+    "signedIn": "Signed in"
+  },
+  "tradition": {
+    "bible": "Holy Bible",
+    "quran": "Holy Quran",
+    "pick": "Tradition for this reflection"
+  },
+  "passage": {
+    "label": "{reference}, {translation}",
+    "translationName": "Translation: {name}",
+    "verified": "Verified text"
+  },
+  "onboarding": {
+    "3": {
+      "cta": "Begin"
+    }
+  },
+  "auth": {
+    "guest": "Continue as guest",
+    "title": "Keep your reflections <accent>safe</accent>",
+    "body": "Sign in to save passages and keep a private history on every device.",
+    "google": "Continue with Google",
+    "divider": "or with email",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "sendLink": "Email me a sign-in link",
+    "guestNote": "Guest reflections stay in this browser. By continuing you agree to our <terms>Terms</terms> and <privacy>Privacy Policy</privacy>.",
+    "sent": {
+      "title": "Check your inbox",
+      "body": "We sent a sign-in link to {email}. Open it on this device to continue.",
+      "different": "Use a different email"
+    },
+    "password": {
+      "use": "Use a password instead",
+      "useLink": "Email me a link instead",
+      "label": "Password",
+      "signIn": "Sign in",
+      "create": "Create account",
+      "toCreate": "New here? Create an account",
+      "toSignIn": "Have an account? Sign in",
+      "hint": "At least 8 characters."
+    },
+    "signingIn": "Signing you in…",
+    "errors": {
+      "generic": "Something went wrong on our side. Please try again.",
+      "unreachable": "We can’t reach MoodVerse right now. Please try again in a moment.",
+      "invalidEmail": "Enter a valid email address.",
+      "wrongPassword": "That email and password don’t match.",
+      "exists": "There’s already an account with this email. Sign in instead, or use a sign-in link.",
+      "passwordShort": "Use at least 8 characters.",
+      "link": "That sign-in link has expired or was already used. Ask for a new one below.",
+      "google": "We couldn’t finish signing you in with Google. Please try again."
+    }
+  },
+  "reflect": {
+    "greeting": {
+      "morning": "Good morning",
+      "afternoon": "Good afternoon",
+      "evening": "Good evening"
+    },
+    "title": "How are you feeling <accent>right now?</accent>",
+    "fieldLabel": "Your reflection",
+    "placeholder": "What’s on your heart today?",
+    "voice": "Voice · soon",
+    "voiceLabel": "Voice input, coming soon",
+    "wordCount": "{n, plural, one {# word} other {# words}}",
+    "cta": "Find a passage",
+    "tooShort": "Could you say a little more? A sentence or two about what’s on your mind helps us choose well.",
+    "offline": {
+      "title": "You’re offline",
+      "body": "Your words are saved in this browser. We’ll find a passage as soon as you’re back online.",
+      "saved": "Saved in this browser",
+      "waiting": "Waiting for a connection",
+      "retry": "Try again"
+    },
+    "voiceStart": "Voice",
+    "voiceStartLabel": "Speak your reflection",
+    "voiceUnavailable": "Voice isn’t available in this browser.",
+    "listening": "Listening",
+    "done": "Done",
+    "voiceNote": "Voice preview. Audio isn’t kept; only the text you approve.",
+    "lastTime": "Last time · <day></day>",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "lastLink": "Open your last passage, {reference}",
+    "submitHint": "Press Ctrl+Enter, or ⌘+Enter on a Mac, to find a passage.",
+    "listeningTime": "· {time}"
+  },
+  "result": {
+    "why": "Why this passage",
+    "noticed": "What we noticed",
+    "actions": {
+      "save": "Save",
+      "saved": "Saved",
+      "share": "Share",
+      "showAnother": "Show another"
+    }
+  },
+  "detail": {
+    "delete": "Delete this reflection"
+  },
+  "emotions": {
+    "loneliness": "Loneliness",
+    "anxiety": "Anxiety",
+    "fear": "Fear",
+    "grief": "Grief",
+    "doubt": "Doubt",
+    "weariness": "Weariness",
+    "overwhelm": "Overwhelm",
+    "guilt": "Guilt",
+    "anger": "Anger",
+    "sadness": "Sadness",
+    "hope": "Hope",
+    "gratitude": "Gratitude",
+    "joy": "Joy",
+    "peace": "Peace"
+  },
+  "needs": {
+    "comfort": "Seeking comfort",
+    "reassurance": "Seeking reassurance",
+    "calm": "Seeking calm",
+    "strength": "Seeking strength",
+    "forgiveness": "Seeking forgiveness",
+    "direction": "Seeking direction",
+    "thanks": "Giving thanks",
+    "support": "Needing support"
+  },
+  "history": {
+    "title": "History",
+    "private": "Private to you"
+  },
+  "saved": {
+    "title": "Saved"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": {
+      "label": "Theme",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "motion": {
+      "label": "Gentle motion",
+      "body": "Slow image drift and breathing animations."
+    },
+    "textSize": {
+      "label": "Text size",
+      "body": "Also follows your browser zoom."
+    }
+  },
+  "share": {
+    "cardLabel": "Share card: {reference}, {translation}",
+    "cardLabelTransparent": "Share card: {reference}, {translation}, transparent background",
+    "bg": {
+      "photo": "Your photo",
+      "transparent": "Transparent",
+      "dawn": "Dawn lake",
+      "misty": "Misty morning",
+      "sea": "Calm sea",
+      "hills": "Golden hills",
+      "night": "Starry night",
+      "clouds": "Soft clouds",
+      "sky": "Sky gradient",
+      "daybreak": "Daybreak gradient",
+      "midnight": "Midnight",
+      "clean": "Clean white"
+    }
+  },
+  "landing": {
+    "meta": {
+      "title": "MoodVerse · Your emotions meet scripture",
+      "ogAlt": "A dawn lake under a soft sky, with the words: Your emotions meet scripture."
+    },
+    "nav": {
+      "label": "Primary",
+      "how": "How it works",
+      "traditions": "Two traditions",
+      "trust": "Trust",
+      "faq": "FAQ",
+      "signIn": "Sign in",
+      "getApp": "Get the app"
+    },
+    "hero": {
+      "eyebrow": "Scripture for how you feel",
+      "titleLine1": "Your emotions",
+      "titleLine2": "meet scripture.",
+      "body": "Share what is on your heart and receive one passage from the Holy Bible or the Holy Quran, drawn from verified text and chosen with care.",
+      "browser": "Or reflect in your browser",
+      "mockupLabel": "MoodVerse app showing Psalm 34:18",
+      "mockupWhy": "You described loneliness and doubt after a big change. This psalm speaks to God’s nearness in exactly those moments.",
+      "mockupFeedback": "Did this help?",
+      "mockupHelped": "This helped",
+      "mockupNotQuite": "Not quite",
+      "mockupVerified": "Verified"
+    },
+    "stores": {
+      "appStoreLine1": "Download on the",
+      "appStoreLine2": "App Store",
+      "playLine1": "Get it on",
+      "playLine2": "Google Play",
+      "comingSoon": "Coming soon"
+    },
+    "highlights": {
+      "label": "Highlights",
+      "feel": {
+        "title": "Meets what you feel",
+        "body": "Not just the words you type, but the need underneath them."
+      },
+      "verified": {
+        "title": "Verified scripture",
+        "body": "Exact text with its reference and translation. Never AI-written."
+      },
+      "traditions": {
+        "title": "Two traditions",
+        "body": "The Holy Bible or the Holy Quran, each with equal care."
+      },
+      "return": {
+        "title": "A space to return to",
+        "body": "Save the words that stay with you, privately."
+      }
+    },
+    "how": {
+      "overline": "How it works",
+      "titleLine1": "Come as you are.",
+      "titleLine2": "Leave with a little light.",
+      "step": "Step {n}",
+      "reflect": {
+        "title": "Reflect",
+        "body": "Write how you feel in your own words, as much or as little as you like."
+      },
+      "understand": {
+        "title": "Understand",
+        "body": "MoodVerse notices the emotions and the need beneath what you wrote."
+      },
+      "receive": {
+        "title": "Receive",
+        "body": "One verified passage, its exact reference, and a sentence on why it was chosen."
+      },
+      "snippet": "I moved to a new city for work and I feel so alone…"
+    },
+    "traditions": {
+      "overline": "Two traditions, one careful approach",
+      "title": "Each on its own terms, with the same care.",
+      "body": "Choose the Holy Bible or the Holy Quran for any reflection. Passages are never blended, paraphrased or mixed in the app.",
+      "cardLabel": "{tradition}: {reference}, {translation}",
+      "quranBadge": "Arabic · {translation}"
+    },
+    "trust": {
+      "overline": "Trust",
+      "title": "Scripture handled with care. Your words kept safe.",
+      "verified": {
+        "title": "Verified sources",
+        "body": "Every passage comes from published editions stored as exact text, always shown with its reference and translation."
+      },
+      "never": {
+        "title": "Never AI-written verses",
+        "body": "Technology helps choose which passage to show. It never writes, edits or paraphrases scripture."
+      },
+      "private": {
+        "title": "Private reflections",
+        "body": "What you write is private by default and never appears on a share card. Export or delete it anytime."
+      },
+      "sources": "About our scripture sources"
+    },
+    "gallery": {
+      "overline": "Share cards",
+      "title": "Share a passage, not your private thoughts.",
+      "body": "Twelve backgrounds sized for stories, including your own photo or a transparent PNG you can place anywhere. Your reflection is never added.",
+      "transparentPng": "Transparent PNG"
+    },
+    "limits": {
+      "overline": "Honest limits",
+      "title": "What MoodVerse is not",
+      "chatbot": {
+        "title": "Not a chatbot",
+        "body": "No conversation, no persona. You write; you receive one passage."
+      },
+      "therapy": {
+        "title": "Not therapy",
+        "body": "It can sit beside care, never replace it. If you’re in crisis, please contact local emergency services or a crisis line."
+      },
+      "authority": {
+        "title": "Not a theological authority",
+        "body": "Each note explains our choice, not the passage’s meaning. For guidance, turn to your community and teachers."
+      }
+    },
+    "faq": {
+      "title": "Questions, gently answered",
+      "ai": {
+        "q": "Does AI write the verses?",
+        "a": "No. Every passage is exact text from a published edition, shown with its reference and translation. Technology only helps decide which passage to offer."
+      },
+      "who": {
+        "q": "Who can see my reflections?",
+        "a": "Only you. Reflections are private by default, never added to share cards, and you can export or delete them in Settings."
+      },
+      "background": {
+        "q": "Can I use my own background on a share card?",
+        "a": "Yes. Choose one of your photos, or save the card as a transparent PNG and place it on any background you like."
+      },
+      "account": {
+        "q": "Can I use it without an account?",
+        "a": "Yes. Continue as a guest and your reflections stay on that device. Sign in later to keep them across devices."
+      },
+      "serious": {
+        "q": "What if I’m going through something serious?",
+        "a": "MoodVerse still offers a passage, alongside a gentle note encouraging you to reach out to someone you trust or a local support line."
+      }
+    },
+    "cta": {
+      "title": "Take a quiet moment.",
+      "body": "On iPhone, Android and the web.",
+      "start": "Start your reflection"
+    },
+    "footer": {
+      "label": "Footer",
+      "copyright": "© {year}",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "sources": "Scripture sources",
+      "contact": "Contact"
+    }
+  },
+  "welcome": {
+    "caption": "Come as you are. Leave with a little light.",
+    "skip": "Skip",
+    "progress": "Step {n} of 3",
+    "back": "Back",
+    "continue": "Continue",
+    "step1": {
+      "eyebrow": "Welcome",
+      "title": "A quiet place to bring <accent>how you feel.</accent>",
+      "body": "Write a few honest words. Receive one passage of scripture that meets you there, with a short note on why it was chosen.",
+      "cta": "Get started",
+      "secondary": "I have an account"
+    },
+    "step2": {
+      "overline": "Gentle by design",
+      "title": "What MoodVerse is, and what it isn’t",
+      "scripture": {
+        "title": "Scripture, never invented",
+        "body": "Verified text with its exact reference and translation."
+      },
+      "chatbot": {
+        "title": "Not a chatbot",
+        "body": "No conversation to keep up. Just your words and one passage."
+      },
+      "therapy": {
+        "title": "Not therapy or an authority",
+        "body": "A pause, alongside the people and guidance you trust."
+      },
+      "private": {
+        "title": "Private by default",
+        "body": "Nothing is shared unless you choose to share it."
+      }
+    },
+    "step3": {
+      "overline": "Your default",
+      "title": "Where would you like to begin?",
+      "body": "You can switch for any reflection, or change this later in Settings.",
+      "label": "Default tradition",
+      "bible": "King James Version · more in Settings",
+      "quran": "Arabic with Pickthall translation"
+    }
+  }
+}
