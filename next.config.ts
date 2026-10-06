@@ -4,7 +4,8 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // AVIF first (smallest), WebP for browsers without it.
+  images: { formats: ["image/avif", "image/webp"] },
 };
 
 export default withNextIntl(nextConfig);
