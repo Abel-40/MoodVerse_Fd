@@ -23,6 +23,7 @@ import {
   shareBlob,
 } from "@/lib/client/share-export";
 import { cx } from "@/lib/cx";
+import { track } from "@/lib/telemetry";
 
 type Tone = "light" | "dark";
 
@@ -205,6 +206,7 @@ export function ShareEditor({ id, passageId }: { id: number; passageId: string |
         if (action === "download") downloadBlob(blob, fileName);
         else await shareBlob(blob, fileName, passage.reference);
       }
+      track({ name: "share_background", background });
     } catch (error) {
       // Closing the share sheet isn't a failure.
       if (!(error instanceof DOMException && error.name === "AbortError")) setToast(t("share.failed"));

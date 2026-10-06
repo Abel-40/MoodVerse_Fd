@@ -5,6 +5,7 @@ import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tansta
 import type { ShareBackground } from "@/components/mv/ShareCard";
 import { listSaved, toggleSaved, updateSavedBackground, type SavedItem } from "@/lib/client/saved-store";
 import type { Passage, Tradition } from "@/lib/scripture";
+import { track } from "@/lib/telemetry";
 
 import { ApiError, apiFetch } from "./client";
 import { toReflection } from "./mapping";
@@ -72,6 +73,7 @@ export function useFeedback(reflectionId: number) {
         method: "POST",
         json: { canonical_id: passageId, helpful: helped, note: reason },
       }),
+    onSuccess: (_data, { helped }) => track({ name: "feedback_value", helped }),
   });
 }
 

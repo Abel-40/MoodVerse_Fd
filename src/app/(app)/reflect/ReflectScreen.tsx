@@ -20,6 +20,7 @@ import { countWords, isLongEnough, loadDraft, saveDraft, stagePendingReflection 
 import { readDefaultTradition } from "@/lib/client/session";
 import { cx } from "@/lib/cx";
 import type { Passage, Tradition } from "@/lib/scripture";
+import { track } from "@/lib/telemetry";
 
 interface LastReflection {
   id: number;
@@ -117,6 +118,7 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
     void saveDraft(text);
     // The text travels in sessionStorage, never in the URL.
     stagePendingReflection({ text: text.trim(), tradition });
+    track({ name: "reflection_tradition", tradition });
     router.push("/reflect/finding");
   }
 
