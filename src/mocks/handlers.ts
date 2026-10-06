@@ -108,6 +108,9 @@ const user: UserDto = {
   preferred_religion: "bible",
 };
 
+/** Switches for behaviour the backend doesn't have yet. */
+export const mockOptions = { deleteSupported: false };
+
 export const handlers = [
   http.post("/api/mv/api/v1/recommendations", async ({ request }) => {
     const body = (await request.json()) as { text: string; religion: Tradition };
@@ -145,10 +148,14 @@ export const handlers = [
 
   http.post("/api/mv/api/v1/reflections/:id/feedback", () => HttpResponse.json({ ok: true }, { status: 201 })),
 
-  // Like the current backend, which has no delete route yet.
-  http.delete("/api/mv/api/v1/reflections/:id", () =>
-    HttpResponse.json({ detail: "Method Not Allowed" }, { status: 405 }),
-  ),
+  // Like the current backend, which has no delete route yet, unless a test
+  // turns it on to see the flow it will have.
+  http.delete("/api/mv/api/v1/reflections/:id", ({ params }) => {
+    if (!mockOptions.deleteSupported) return HttpResponse.json({ detail: "Method Not Allowed" }, { status: 405 });
+    reflections.delete(Number(params.id));
+    persist();
+    return new HttpResponse(null, { status: 204 });
+  }),
 
   http.get("/api/mv/auth/me", () => HttpResponse.json(user)),
 
