@@ -32,7 +32,12 @@ const naskh = Noto_Naskh_Arabic({
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("app");
-  return { title: t("name"), description: t("description") };
+  return {
+    // Where share previews (the Open Graph image) are fetched from.
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:3200"),
+    title: t("name"),
+    description: t("description"),
+  };
 }
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
