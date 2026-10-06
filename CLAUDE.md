@@ -51,6 +51,13 @@
   Put a marker in a reflection to see a state: `[mock:fail]` (analysis
   failed), `[mock:busy]` (429), `[mock:expired]` (401, session ended),
   `[mock:slow]` (holds the finding screen for a minute).
+- **Tests.** `npm test` runs the unit tests (Vitest, `src/**/*.test.ts`).
+  `npm run test:e2e` runs the Playwright suite in `e2e/` against the dev
+  server with mocks, in the installed Chrome; it reuses a server already on
+  port 3200, so start that one with `NEXT_PUBLIC_API_MOCKING=1`. The mock
+  service worker answers API calls, so `page.route` never sees them: override
+  responses with `window.__msw.worker.use(...)`, and switch on behaviour the
+  backend lacks with `window.__msw.options` (e.g. `deleteSupported`).
 - **Privacy.** Anything sent off the device besides the API goes through
   `src/lib/telemetry.ts`: `scrubEvent` is the `beforeSend` for an error
   tracker, and `track()` sends only the allowlisted counts. The `/api/mv`
