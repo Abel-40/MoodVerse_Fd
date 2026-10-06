@@ -195,7 +195,7 @@ export function SettingsScreen({ account }: { account: SettingsAccount }) {
                 sizes="(max-width: 760px) 100vw, 800px"
                 className="object-cover object-[center_40%]"
               />
-              <div aria-hidden="true" className="absolute inset-0 bg-[rgba(18,16,52,.42)]" />
+              <div aria-hidden="true" className="absolute inset-0 bg-[rgba(18,16,52,.55)]" />
               <GlassPanel
                 as="span"
                 variant="glass-dark"

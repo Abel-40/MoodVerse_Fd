@@ -82,7 +82,7 @@ export function PassageView({ passage, tone = "surface", unlabelled = false, cla
         <figcaption className="flex flex-wrap items-center justify-center gap-3">
           <cite className="text-sm font-extrabold tracking-[.14em] uppercase not-italic">{passage.reference}</cite>
           <span className="text-sm opacity-90">{translation}</span>
-          <span className="inline-flex h-[26px] items-center gap-1 rounded-full bg-white/18 px-2.5 text-xs font-bold [text-shadow:none]">
+          <span className="inline-flex h-[26px] items-center gap-1 rounded-full bg-[rgba(12,16,40,.3)] px-2.5 text-xs font-bold [text-shadow:none]">
             <ShieldCheck size={14} />
             {t("passage.verified")}
           </span>

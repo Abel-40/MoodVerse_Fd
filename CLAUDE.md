@@ -49,7 +49,8 @@
   the active locale (`useLocale()`).
 - **Mocks.** `NEXT_PUBLIC_API_MOCKING=1` answers `/api/mv` from `src/mocks`.
   Put a marker in a reflection to see a state: `[mock:fail]` (analysis
-  failed), `[mock:busy]` (429), `[mock:expired]` (401, session ended).
+  failed), `[mock:busy]` (429), `[mock:expired]` (401, session ended),
+  `[mock:slow]` (holds the finding screen for a minute).
 - **Privacy.** Anything sent off the device besides the API goes through
   `src/lib/telemetry.ts`: `scrubEvent` is the `beforeSend` for an error
   tracker, and `track()` sends only the allowlisted counts. The `/api/mv`

@@ -147,7 +147,7 @@ export function SignInCard({ initialError }: { initialError: SignInError | null 
 
       <div className="flex items-center gap-3">
         <span className="h-px grow bg-line" />
-        <span className="text-[13px] text-ink-3">{t("divider")}</span>
+        <span className="text-[13px] text-ink-2">{t("divider")}</span>
         <span className="h-px grow bg-line" />
       </div>
 
@@ -188,7 +188,7 @@ export function SignInCard({ initialError }: { initialError: SignInError | null 
               className={INPUT}
             />
             {passwordMode === "create" && (
-              <span id={`${ids.password}-hint`} className="text-[13px] text-ink-3">
+              <span id={`${ids.password}-hint`} className="text-[13px] text-ink-2">
                 {t("password.hint")}
               </span>
             )}
@@ -229,7 +229,7 @@ export function SignInCard({ initialError }: { initialError: SignInError | null 
         <Button variant="ghost" className="text-base text-ink" onClick={continueAsGuest}>
           {t("guest")}
         </Button>
-        <p className="text-center text-xs leading-[18px] text-ink-3">
+        <p className="text-center text-xs leading-[18px] text-ink-2">
           {t.rich("guestNote", {
             terms: (chunks) => (
               <Link href="/terms" className="underline">

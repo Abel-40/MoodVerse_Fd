@@ -355,8 +355,8 @@ function Detail({ reflection, onDelete }: { reflection: Reflection; onDelete: ()
           sizes="(max-width: 1180px) 100vw, 760px"
           className="object-cover"
         />
-        <div aria-hidden="true" className="mv-scrim absolute inset-0" />
-        <span className="relative text-xs font-extrabold tracking-[.14em] uppercase opacity-92">
+        <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,14,38,.46)_0%,rgba(10,14,38,.52)_40%,rgba(10,14,38,.7)_100%)]" />
+        <span className="relative text-xs font-extrabold tracking-[.14em] uppercase">
           {t(`tradition.${passage.tradition}`)}
         </span>
         <div className="relative flex flex-col gap-3 [text-shadow:0_1px_16px_rgba(8,10,30,.35)]">

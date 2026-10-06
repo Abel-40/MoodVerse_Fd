@@ -1,6 +1,6 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 
+import { SceneImage } from "./SceneImage";
 import { GlassPanel, IconBadge } from "./Surfaces";
 
 interface MessagePanelProps {
@@ -22,15 +22,13 @@ interface MessagePanelProps {
 export function MessagePanel({ icon, title, body, actions, footer, alert = true }: MessagePanelProps) {
   return (
     <div className="relative flex h-full min-h-[640px] items-center justify-center overflow-hidden px-6 py-10 text-ink">
-      <Image
+      <SceneImage
         src="/images/soft-clouds.jpg"
-        alt=""
-        fill
         loading="eager"
         sizes="(max-width: 900px) 100vw, calc(100vw - 256px)"
         className="mv-drift object-cover"
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-white/15" />
+      <div aria-hidden="true" className="absolute inset-0 bg-white/15 dark:bg-transparent" />
       <GlassPanel
         as="section"
         role={alert ? "alert" : undefined}

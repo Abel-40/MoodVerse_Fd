@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
+import { SceneImage } from "@/components/mv/SceneImage";
 import { Wordmark } from "@/components/mv/Wordmark";
 
 /** Full-bleed calm sea with the wordmark, behind the sign-in card. */
@@ -11,10 +11,8 @@ export function AuthBackdrop({ children }: { children: ReactNode }) {
 
   return (
     <main id="content" tabIndex={-1} className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-5 py-10">
-      <Image
+      <SceneImage
         src="/images/calm-sea.jpg"
-        alt=""
-        fill
         preload
         loading="eager"
         sizes="100vw"

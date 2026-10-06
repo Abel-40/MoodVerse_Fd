@@ -1,4 +1,4 @@
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
 
 import type { ReflectionDto, SubmitDto, UserDto } from "@/lib/api/types";
 import { SAMPLE_PASSAGES, SAMPLE_WHY } from "@/lib/fixtures";
@@ -39,10 +39,11 @@ let nextId = Math.max(9000, ...reflections.keys()) + 1;
 // Words that make the mock flag a reflection for the support card.
 const CRISIS_WORDS = /hurt myself|end it|kill myself|don't want to live/i;
 // Include these in a reflection to see the "couldn't find a passage",
-// rate-limited and session-ended states.
+// rate-limited and session-ended states, or to hold the finding screen.
 const FAIL_MARKER = "[mock:fail]";
 const BUSY_MARKER = "[mock:busy]";
 const EXPIRED_MARKER = "[mock:expired]";
+const SLOW_MARKER = "[mock:slow]";
 
 function toDto(reflection: MockReflection): ReflectionDto {
   // The first poll says "processing", like the real background worker.
@@ -112,6 +113,7 @@ export const handlers = [
     const body = (await request.json()) as { text: string; religion: Tradition };
     if (body.text.includes(BUSY_MARKER)) return HttpResponse.json({ detail: "rate_limited" }, { status: 429 });
     if (body.text.includes(EXPIRED_MARKER)) return HttpResponse.json({ error: "signedOut" }, { status: 401 });
+    if (body.text.includes(SLOW_MARKER)) await delay(60_000);
     const reflection: MockReflection = {
       id: nextId++,
       text: body.text,
