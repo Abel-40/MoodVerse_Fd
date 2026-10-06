@@ -36,6 +36,25 @@
   lives in the `mv-theme` cookie. Any subtree can force a theme with
   `data-theme="light|dark"`. Use `usePreferences()` from
   `src/lib/use-preferences.ts` to change theme or motion.
+- **Landmarks.** Each page has one `<main id="content" tabIndex={-1}>`, the
+  root layout's skip link target. Side columns inside a page are labelled
+  `<section>`s, not `<aside>`s (axe wants complementary landmarks top level).
+- **Languages and direction.** English only unless `NEXT_PUBLIC_ARABIC=1`,
+  which adds Arabic (`messages/ar.json`, English placeholders until a reviewed
+  translation; `src/i18n/messages.test.ts` keeps its keys in step with
+  `en.json`). Settings writes the `mv-locale` cookie. Use logical properties
+  (`ms-`, `pe-`, `start-`, `border-inline-end`), mirror directional icons with
+  `rtl:-scale-x-100`, mark English scripture `lang="en" dir="ltr"`, Arabic
+  `lang="ar" dir="rtl"`, and user-written text `dir="auto"`. Format dates with
+  the active locale (`useLocale()`).
+- **Mocks.** `NEXT_PUBLIC_API_MOCKING=1` answers `/api/mv` from `src/mocks`.
+  Put a marker in a reflection to see a state: `[mock:fail]` (analysis
+  failed), `[mock:busy]` (429), `[mock:expired]` (401, session ended).
+- **Privacy.** Anything sent off the device besides the API goes through
+  `src/lib/telemetry.ts`: `scrubEvent` is the `beforeSend` for an error
+  tracker, and `track()` sends only the allowlisted counts. The `/api/mv`
+  proxy answers with `Cache-Control: no-store`. Every variable is listed in
+  `.env.example`.
 - **Legacy code.** The API console (`Console`, `EndpointCard`, `LogPanel`,
   `ResponseView`, `TopBar`, `ReflectionPoll`, `VoiceRecorder`, and
   `src/lib/{api,endpoints,request,session}`) predates the kit and is no
