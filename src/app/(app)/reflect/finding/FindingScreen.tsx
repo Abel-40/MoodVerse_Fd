@@ -247,9 +247,9 @@ export function FindingScreen({ guest }: { guest: boolean }) {
       <BreathingSun />
 
       <div className="relative flex flex-col items-center gap-2.5 text-center [text-shadow:0_1px_14px_rgba(8,10,30,.35)]">
-        <p role="status" className="font-serif text-[40px] font-medium tracking-[-0.01em]">
-          {t("finding.title")}
-        </p>
+        <div role="status">
+          <h1 className="font-serif text-[40px] font-medium tracking-[-0.01em]">{t("finding.title")}</h1>
+        </div>
         {pending && <p className="text-[15px] font-semibold opacity-92">{t(`tradition.${pending.tradition}`)}</p>}
         {preview && (
           <p dir="auto" className="mt-3.5 max-w-[460px] font-serif text-xl leading-[1.45] italic opacity-92">“{preview}”</p>

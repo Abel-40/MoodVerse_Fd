@@ -90,17 +90,16 @@ export function SavedScreen() {
             const card = <ShareCard passage={item.passage} background={item.background} width={CARD_WIDTH} />;
             return (
               <li key={item.passage.id} className="flex flex-col gap-3">
-                {editor ? (
-                  <Link
-                    href={editor}
-                    aria-label={t("saved.open", { reference: item.passage.reference })}
-                    className="block w-fit overflow-hidden rounded-3xl shadow-sheet"
-                  >
-                    {card}
-                  </Link>
-                ) : (
-                  <div className="w-fit overflow-hidden rounded-3xl shadow-sheet">{card}</div>
-                )}
+                <div className="relative w-fit">
+                  <div className="overflow-hidden rounded-3xl shadow-sheet">{card}</div>
+                  {editor && (
+                    <Link
+                      href={editor}
+                      aria-label={t("saved.open", { reference: item.passage.reference })}
+                      className="absolute inset-0 rounded-3xl"
+                    />
+                  )}
+                </div>
                 <div className="flex items-center justify-between" style={{ width: CARD_WIDTH }}>
                   <div className="flex min-w-0 flex-col gap-0.5">
                     <span className="truncate text-sm font-extrabold">{item.passage.reference}</span>

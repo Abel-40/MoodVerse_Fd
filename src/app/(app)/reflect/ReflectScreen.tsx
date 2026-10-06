@@ -156,13 +156,14 @@ export function ReflectScreen({ accountTradition, last }: ReflectScreenProps) {
       <button
         type="button"
         aria-disabled="true"
-        aria-label={VOICE_ENABLED ? t("reflect.voiceUnavailable") : t("reflect.voiceLabel")}
+        aria-describedby={ids.voiceTip}
         className="flex h-11 cursor-default items-center gap-1.5 rounded-full bg-surface-2 pe-3.5 ps-2.5 text-[13px] font-bold text-ink-3"
       >
         <Mic size={20} />
         {t("reflect.voice")}
       </button>
       <span
+        id={ids.voiceTip}
         aria-hidden="true"
         className="pointer-events-none absolute bottom-full start-0 mb-2 rounded-xl bg-ink px-3 py-2 text-xs font-semibold whitespace-nowrap text-bg opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
       >

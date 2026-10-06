@@ -65,9 +65,9 @@ export function ResultScreen({ id, guest }: { id: number; guest: boolean }) {
         <SceneImage src="/images/hero-dawn.jpg" loading="eager" sizes={SIDE_SIZES} className="mv-drift object-cover" />
         <div aria-hidden="true" className="absolute inset-0 bg-[rgba(16,14,48,.35)]" />
         <BreathingSun className="relative" />
-        <p role="status" className="relative font-serif text-[40px] font-medium">
-          {t("finding.title")}
-        </p>
+        <div role="status" className="relative">
+          <h1 className="font-serif text-[40px] font-medium">{t("finding.title")}</h1>
+        </div>
       </div>
     );
   }
@@ -123,6 +123,7 @@ export function ResultScreen({ id, guest }: { id: number; guest: boolean }) {
         </div>
 
         {/* Keyed by passage so "Show another" fades the new one in. */}
+        <h1 className="sr-only">{t("result.heading")}</h1>
         <div
           key={passage.id}
           role="article"

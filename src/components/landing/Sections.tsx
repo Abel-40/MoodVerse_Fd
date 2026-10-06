@@ -23,7 +23,10 @@ export function Highlights() {
   ] as const;
 
   return (
-    <section aria-label={t("label")} className={cx("mv-reveal pt-6 pb-[72px]", GUTTER)}>
+    <section aria-labelledby="highlights-title" className={cx("mv-reveal pt-6 pb-[72px]", GUTTER)}>
+      <h2 id="highlights-title" className="sr-only">
+        {t("label")}
+      </h2>
       <ul className="mx-auto grid max-w-content grid-cols-[repeat(auto-fit,minmax(min(240px,100%),1fr))] gap-4">
         {items.map(({ key, Icon }) => (
           <Card as="li" key={key} bordered className="flex flex-col gap-3 p-6">
@@ -273,7 +276,7 @@ export function Gallery() {
       {/* Focusable so keyboard users can scroll the row sideways. */}
       <div
         role="region"
-        aria-labelledby="gallery-title"
+        aria-label={t("landing.gallery.examples")}
         tabIndex={0}
         className={cx("mt-11 overflow-x-auto pt-2 pb-8 [scrollbar-width:thin]", GUTTER)}
       >

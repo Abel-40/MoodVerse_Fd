@@ -92,7 +92,7 @@
       "retry": "Try again"
     },
     "voiceStart": "Voice",
-    "voiceStartLabel": "Speak your reflection",
+    "voiceStartLabel": "Voice: speak your reflection",
     "voiceUnavailable": "Voice isn’t available in this browser.",
     "listening": "Listening",
     "done": "Done",
@@ -105,6 +105,7 @@
     "listeningTime": "· {time}"
   },
   "result": {
+    "heading": "Your passage",
     "loading": "Loading this passage…",
     "why": "Why this passage",
     "noticed": "What we noticed",
@@ -440,6 +441,7 @@
       "overline": "Share cards",
       "title": "Share a passage, not your private thoughts.",
       "body": "Twelve backgrounds sized for stories, including your own photo or a transparent PNG you can place anywhere. Your reflection is never added.",
+      "examples": "Example share cards",
       "transparentPng": "Transparent PNG"
     },
     "limits": {
